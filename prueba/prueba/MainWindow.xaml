@@ -5,8 +5,442 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:prueba"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="650" Width="1000"
+        Background="#121212"
+        FontFamily="Segoe UI">
 
+    <Window.Resources>
+        <Style x:Key="SidebarNavButtonStyle" TargetType="RadioButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#8E8E8E"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="GroupName" Value="SidebarMenu"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="6">
+                            <ContentPresenter Margin="14,0"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Hover: Verde más claro (#52E857) -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#52E857"/>
+                                <Setter Property="Foreground" Value="#121212"/>
+                            </Trigger>
+                            <!-- Activo / Seleccionado: Verde principal (#27D92D) -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#27D92D"/>
+                                <Setter Property="Foreground" Value="#121212"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Menú Lateral -->
+        <Border Grid.Column="0"
+                Background="#121212"
+                BorderBrush="#242424"
+                BorderThickness="0,0,1,0">
+
+            <Grid Margin="16,28,16,24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- 1. Logotipo (Imagen + Texto SoundWafe) -->
+                <StackPanel Grid.Row="0"
+                            Orientation="Horizontal"
+                            Margin="12,0,0,36"
+                            VerticalAlignment="Center">
+                    <Image x:Name="LogoImage"
+                           Source="/Assets/LogoBosco2.png"
+                           Width="28"
+                           Height="28"
+                           Margin="0,0,10,0"
+                           Stretch="Uniform"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <TextBlock Text="SoundWafe"
+                               Foreground="#FFFFFF"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- 2. Menú de navegación -->
+                <StackPanel Grid.Row="1">
+                    <RadioButton Style="{StaticResource SidebarNavButtonStyle}" IsChecked="True">
+                        <StackPanel Orientation="Horizontal">
+                            <Path Data="M3,9 L12,2 L21,9 V20 A2,2 0 0 1 19,22 H5 A2,2 0 0 1 3,20 Z M9,22 V12 H15 V22"
+                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"
+                                  StrokeThickness="1.8"
+                                  Width="16" Height="16" Stretch="Uniform" Margin="0,0,14,0"/>
+                            <TextBlock Text="Inicio" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource SidebarNavButtonStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <Path Data="M12,2 A10,10 0 1 0 12,22 A10,10 0 1 0 12,2 Z M12,9 A3,3 0 1 0 12,15 A3,3 0 1 0 12,9 Z"
+                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"
+                                  StrokeThickness="1.8"
+                                  Width="16" Height="16" Stretch="Uniform" Margin="0,0,14,0"/>
+                            <TextBlock Text="Artistas y álbumes" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource SidebarNavButtonStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <Path Data="M9,18 V5 L21,3 V16 M6,15 A3,3 0 1 0 6,21 A3,3 0 1 0 6,15 Z M18,13 A3,3 0 1 0 18,19 A3,3 0 1 0 18,13 Z"
+                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"
+                                  StrokeThickness="1.8"
+                                  Width="16" Height="16" Stretch="Uniform" Margin="0,0,14,0"/>
+                            <TextBlock Text="Canciones" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource SidebarNavButtonStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <Path Data="M8,6 H21 M8,12 H21 M8,18 H21 M3,6 H4 M3,12 H4 M3,18 H4"
+                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"
+                                  StrokeThickness="1.8"
+                                  Width="16" Height="16" Stretch="Uniform" Margin="0,0,14,0"/>
+                            <TextBlock Text="Mis listas" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
+                </StackPanel>
+
+                <!-- 3. Pie del menú lateral -->
+                <Border Grid.Row="2"
+                        BorderBrush="#242424"
+                        BorderThickness="0,1,0,0">
+                    <StackPanel Margin="10,20,10,0">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                            <Border Width="34"
+                                    Height="34"
+                                    CornerRadius="17"
+                                    Background="#E2BE86"
+                                    Margin="0,0,12,0">
+                                <TextBlock Text="IM"
+                                           Foreground="#121212"
+                                           FontSize="12"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Isabel Martínez"
+                                           Foreground="#FFFFFF"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"/>
+                                <TextBlock Text="Tu biblioteca"
+                                           Foreground="#777777"
+                                           FontSize="11"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <TextBlock Text="La música que te acompaña,&#x0a;sin distracciones."
+                                   Foreground="#5A5A5A"
+                                   FontSize="11"
+                                   LineHeight="16"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Espacio libre a la derecha -->
+        <!-- Espacio libre a la derecha: Vista INICIO -->
+        <ScrollViewer Grid.Column="1"
+              VerticalScrollBarVisibility="Auto"
+              HorizontalScrollBarVisibility="Disabled"
+              Background="#121212">
+
+            <StackPanel Margin="44,36,44,48">
+
+                <!-- 1. BANNER PRINCIPAL ("Entre líneas") -->
+                <Border Background="#222222"
+                Height="350"
+                Margin="0,0,0,48"
+                ClipToBounds="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48*"/>
+                            <ColumnDefinition Width="52*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Imagen derecha del artista (sustituye Source por tu imagen) -->
+                        <Grid Grid.Column="1" Background="#8C8C8C">
+                            <Image Source="/imagenes/banner_entre_lineas.jpg"
+                           Stretch="UniformToFill"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
+
+                            <!-- Degradado de izquierda a derecha para fundir con el fondo oscuro -->
+                            <Border>
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="0.45,0.5">
+                                        <GradientStop Color="#222222" Offset="0"/>
+                                        <GradientStop Color="#00222222" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+
+                            <!-- Texto vertical superior derecho "ENTRE LÍNEAS" -->
+                            <TextBlock Text="ENTRE LÍNEAS"
+                               Foreground="#99FFFFFF"
+                               FontSize="9"
+                               FontWeight="SemiBold"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Top"
+                               Margin="0,42,18,0">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="90"/>
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+
+                            <!-- Número inferior derecho "01" -->
+                            <TextBlock Text="01"
+                               FontFamily="Georgia"
+                               FontSize="15"
+                               FontWeight="Bold"
+                               Foreground="#FFFFFF"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Bottom"
+                               Margin="0,0,28,22"/>
+                        </Grid>
+
+                        <!-- Contenido textual izquierdo del banner -->
+                        <StackPanel Grid.Column="0"
+                            VerticalAlignment="Center"
+                            Margin="48,0,10,0">
+
+                            <TextBlock Text="NUEVO · INDIE POP"
+                               Foreground="#E86F3A"
+                               FontSize="10"
+                               FontWeight="Bold"
+                               Margin="0,0,0,14"/>
+
+                            <TextBlock Text="Entre&#x0a;líneas"
+                               FontFamily="Georgia"
+                               FontSize="46"
+                               FontWeight="Bold"
+                               Foreground="#FFFFFF"
+                               LineHeight="50"
+                               Margin="0,0,0,14"/>
+
+                            <TextBlock Text="Mara Vélez"
+                               Foreground="#CCCCCC"
+                               FontSize="13"
+                               Margin="0,0,0,20"/>
+
+                            <TextBlock Text="Un disco íntimo sobre todo lo que dejamos sin decir."
+                               Foreground="#8E8E8E"
+                               FontSize="12"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,26"/>
+
+                            <!-- Botón verde "Ver canciones →" -->
+                            <Button HorizontalAlignment="Left"
+                            Cursor="Hand"
+                            Height="36">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="BtnBd"
+                                        Background="#27D92D"
+                                        CornerRadius="4">
+                                            <StackPanel Orientation="Horizontal"
+                                                Margin="18,0"
+                                                VerticalAlignment="Center">
+                                                <TextBlock Text="Ver canciones"
+                                                   Foreground="#121212"
+                                                   FontSize="12"
+                                                   FontWeight="Bold"
+                                                   VerticalAlignment="Center"
+                                                   Margin="0,0,12,0"/>
+                                                <TextBlock Text="→"
+                                                   Foreground="#121212"
+                                                   FontSize="14"
+                                                   FontWeight="Bold"
+                                                   VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="BtnBd" Property="Background" Value="#52E857"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- 2. SECCIÓN: "Elige cómo suena tu día" -->
+                <TextBlock Text="PARA TU MOMENTO"
+                   Foreground="#E86F3A"
+                   FontSize="10"
+                   FontWeight="Bold"
+                   Margin="0,0,0,8"/>
+
+                <TextBlock Text="Elige cómo suena tu día"
+                   FontFamily="Georgia"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   Foreground="#FFFFFF"
+                   Margin="0,0,0,22"/>
+
+                <!-- 3 Tarjetas horizontales -->
+                <Grid Margin="0,0,0,36">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Tarjeta 1: Modo foco -->
+                    <Button Grid.Column="0" Height="96" Cursor="Hand" HorizontalContentAlignment="Stretch">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="Card1" Background="#6E3B2C" CornerRadius="2">
+                                    <Grid Margin="18,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Icono círculo con destellos -->
+                                        <Border Grid.Column="0" Width="34" Height="34" CornerRadius="17" Background="#26FFFFFF" Margin="0,0,14,0">
+                                            <Path Data="M12,2 L13.5,8.5 L20,10 L13.5,11.5 L12,18 L10.5,11.5 L4,10 L10.5,8.5 Z M19,15 L19.8,17.2 L22,18 L19.8,18.8 L19,21 L18.2,18.8 L16,18 L18.2,17.2 Z"
+                                          Stroke="#FFFFFF" StrokeThickness="1.5" Width="15" Height="15" Stretch="Uniform"/>
+                                        </Border>
+
+                                        <!-- Textos -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="Modo foco" FontFamily="Georgia" FontSize="15" FontWeight="Bold" Foreground="#FFFFFF" Margin="0,0,0,3"/>
+                                            <TextBlock Text="Para estudiar sin perder el hilo" FontSize="10.5" Foreground="#D4B5AC" TextWrapping="Wrap"/>
+                                        </StackPanel>
+
+                                        <!-- Flecha derecha -->
+                                        <TextBlock Grid.Column="2" Text="→" Foreground="#E6C7BE" FontSize="14" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                    </Grid>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Card1" Property="Background" Value="#824634"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- Tarjeta 2: Sube el ritmo -->
+                    <Button Grid.Column="2" Height="96" Cursor="Hand" HorizontalContentAlignment="Stretch">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="Card2" Background="#2C4F5E" CornerRadius="2">
+                                    <Grid Margin="18,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Icono círculo con auriculares -->
+                                        <Border Grid.Column="0" Width="34" Height="34" CornerRadius="17" Background="#26FFFFFF" Margin="0,0,14,0">
+                                            <Path Data="M4,14 V12 A8,8 0 0 1 20,12 V14 M4,14 H6 A2,2 0 0 1 8,16 V19 A2,2 0 0 1 6,21 H4 V14 Z M20,14 H18 A2,2 0 0 0 16,16 V19 A2,2 0 0 0 18,21 H20 V14 Z"
+                                          Stroke="#FFFFFF" StrokeThickness="1.5" Width="15" Height="15" Stretch="Uniform"/>
+                                        </Border>
+
+                                        <!-- Textos -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="Sube el ritmo" FontFamily="Georgia" FontSize="15" FontWeight="Bold" Foreground="#FFFFFF" Margin="0,0,0,3"/>
+                                            <TextBlock Text="Energía para llegar un poco más lejos" FontSize="10.5" Foreground="#B3CCD6" TextWrapping="Wrap"/>
+                                        </StackPanel>
+
+                                        <!-- Flecha derecha -->
+                                        <TextBlock Grid.Column="2" Text="→" Foreground="#C4DCE6" FontSize="14" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                    </Grid>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Card2" Property="Background" Value="#355F70"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- Tarjeta 3: En carretera -->
+                    <Button Grid.Column="4" Height="96" Cursor="Hand" HorizontalContentAlignment="Stretch">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="Card3" Background="#252525" CornerRadius="2" ClipToBounds="True">
+                                    <Grid>
+                                        <!-- Imagen de fondo opcional de carretera -->
+                                        <Image Source="/imagenes/en_carretera.jpg"
+                                       Stretch="UniformToFill"
+                                       Opacity="0.45"
+                                       RenderOptions.BitmapScalingMode="HighQuality"/>
+
+                                        <Grid Margin="18,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Icono círculo con flecha -->
+                                            <Border Grid.Column="0" Width="34" Height="34" CornerRadius="17" Background="#26FFFFFF" Margin="0,0,14,0">
+                                                <TextBlock Text="→" Foreground="#FFFFFF" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+
+                                            <!-- Textos -->
+                                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                <TextBlock Text="En carretera" FontFamily="Georgia" FontSize="15" FontWeight="Bold" Foreground="#FFFFFF" Margin="0,0,0,3"/>
+                                                <TextBlock Text="La banda sonora del próximo desvío" FontSize="10.5" Foreground="#CCCCCC" TextWrapping="Wrap"/>
+                                            </StackPanel>
+
+                                            <!-- Flecha derecha -->
+                                            <TextBlock Grid.Column="2" Text="→" Foreground="#CCCCCC" FontSize="14" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Card3" Property="Background" Value="#333333"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+                <!-- AQUÍ DEBAJO IRÁ LA SIGUIENTE SECCIÓN QUE ME ENVÍES -->
+
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

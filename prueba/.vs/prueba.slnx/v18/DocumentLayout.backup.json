@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Alumno\\source\\repos\\prueba\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{763EF57E-ACCA-497F-A36D-FB849C0C91DC}|prueba\\prueba.csproj|c:\\users\\alumno\\source\\repos\\prueba\\prueba\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{763EF57E-ACCA-497F-A36D-FB849C0C91DC}|prueba\\prueba.csproj|solutionrelative:prueba\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\alumno\\source\\repos\\prueba\\prueba\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\alumno\\source\\repos\\prueba\\prueba\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\alumno\\source\\repos\\prueba\\prueba\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\alumno\\source\\repos\\prueba\\prueba\\prueba.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\prueba.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\alumno\\source\\repos\\prueba\\prueba\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\alumno\\source\\repos\\prueba\\prueba\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\alumno\\source\\repos\\prueba\\prueba\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,7 +54,81 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "prueba.csproj",
+              "DocumentMoniker": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\prueba.csproj",
+              "RelativeDocumentMoniker": "prueba\\prueba.csproj",
+              "ToolTip": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\prueba.csproj",
+              "RelativeToolTip": "prueba\\prueba.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-11-17T19:18:03.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "login.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\login.xaml.cs",
+              "RelativeDocumentMoniker": "prueba\\login.xaml.cs",
+              "ToolTip": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\login.xaml.cs",
+              "RelativeToolTip": "prueba\\login.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T19:25:08.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "login.xaml",
+              "DocumentMoniker": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\login.xaml",
+              "RelativeDocumentMoniker": "prueba\\login.xaml",
+              "ToolTip": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\login.xaml",
+              "RelativeToolTip": "prueba\\login.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-11-17T19:19:16.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\App.xaml.cs",
+              "RelativeDocumentMoniker": "prueba\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\App.xaml.cs",
+              "RelativeToolTip": "prueba\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T19:13:40.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "prueba\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\MainWindow.xaml",
+              "RelativeToolTip": "prueba\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-11-13T17:31:16.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\App.xaml",
+              "RelativeDocumentMoniker": "prueba\\App.xaml",
+              "ToolTip": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\App.xaml",
+              "RelativeToolTip": "prueba\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-11-17T19:13:42.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Alumno\\source\\repos\\prueba\\prueba\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "prueba\\MainWindow.xaml.cs",
@@ -38,8 +136,7 @@
               "RelativeToolTip": "prueba\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-13T17:31:14.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-13T17:31:14.283Z"
             }
           ]
         },
