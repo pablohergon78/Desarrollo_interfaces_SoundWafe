@@ -20,5 +20,29 @@ namespace prueba
         {
             InitializeComponent();
         }
+        private void MenuInicio_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 0;
+        }
+
+        private void MenuArtistas_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 1;
+        }
+
+        private void MenuCanciones_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 2;
+        }
+
+        private void MenuListas_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 3;
+        }
+
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
