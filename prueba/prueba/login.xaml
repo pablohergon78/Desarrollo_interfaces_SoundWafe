@@ -1,0 +1,82 @@
+﻿<Window x:Class="prueba.login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:prueba"
+        mc:Ignorable="d"
+        Title="login"
+        Height="650" Width="1000"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        Background="#121212"
+        FontFamily="Segoe UI">
+
+    <!-- Contenedor principal que ocupa toda la ventana maximizada -->
+    <Grid Background="#121212" Margin="40">
+
+        <!-- Tarjeta central del formulario: Width define el ancho base -->
+        <Border Background="#181818"
+                BorderBrush="#242424"
+                BorderThickness="1"
+                CornerRadius="12"
+                Width="560"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Padding="48,44">
+
+            <!-- Escalado para el proyector: aumenta un 25% (1.25) todo el bloque sin deformarlo.
+                 Cambia ScaleX y ScaleY (ej. 1.1 o 1.4) si necesitas ajustarlo en sala -->
+            <Border.RenderTransform>
+                <ScaleTransform ScaleX="1.25" ScaleY="1.25" CenterX="280" CenterY="180"/>
+            </Border.RenderTransform>
+
+            <!-- Apila verticalmente el título, las cajas de texto y el botón -->
+            <StackPanel>
+
+                <!-- Título principal -->
+                <TextBlock Text="Iniciar sesión"
+                           Foreground="#FFFFFF"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,28"/>
+
+                <!-- Campo para escribir el nombre de usuario -->
+                <TextBox Height="44"
+                         FontSize="15"
+                         Margin="0,0,0,14"
+                         Text="Usuario"
+                         Background="#222222"
+                         Foreground="#FFFFFF"
+                         BorderBrush="#333333"
+                         BorderThickness="1"
+                         VerticalContentAlignment="Center"
+                         Padding="14,0"/>
+
+                <!-- Campo oculto para la contraseña -->
+                <PasswordBox Height="44"
+                             FontSize="15"
+                             Margin="0,0,0,22"
+                             Background="#222222"
+                             Foreground="#FFFFFF"
+                             BorderBrush="#333333"
+                             BorderThickness="1"
+                             VerticalContentAlignment="Center"
+                             Padding="14,0"/>
+
+                <!-- Botón verde principal que dispara el evento Entrar_Click en C# -->
+                <Button Content="Entrar"
+                        Height="46"
+                        FontSize="15"
+                        Background="#27D92D"
+                        Foreground="#121212"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        Click="Entrar_Click"/>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

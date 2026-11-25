@@ -1,0 +1,25 @@
+﻿using System.Configuration;
+using System.Data;
+using System.Drawing;
+using System.Windows;
+using System.Windows.Input;
+
+namespace prueba
+{
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    public partial class App : Application
+    {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            using var stream = GetResourceStream(new Uri("/imagenes/LogoBosco2.png", UriKind.Relative)).Stream;
+            using var image = Image.FromStream(stream);
+            using var cursorImage = new Bitmap(image, 32, 32);
+            Mouse.OverrideCursor = new Cursor(cursorImage.GetHicon());
+        }
+    }
+
+}

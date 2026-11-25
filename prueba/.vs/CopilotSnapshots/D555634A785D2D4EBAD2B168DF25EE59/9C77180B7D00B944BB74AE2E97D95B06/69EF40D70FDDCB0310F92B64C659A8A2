@@ -1,0 +1,17 @@
+﻿<Window x:Class="prueba.login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:prueba"
+        mc:Ignorable="d"
+        Title="login" Height="450" Width="800">
+    <Grid Background="Black">
+        <StackPanel Width="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Iniciar sesión" Foreground="White" FontSize="24" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+            <TextBox Height="30" Margin="0,0,0,10" Text="Usuario"/>
+            <PasswordBox Height="30" Margin="0,0,0,15"/>
+            <Button Content="Entrar" Height="35" Background="#27d92d" Foreground="Black"/>
+        </StackPanel>
+    </Grid>
+</Window>
