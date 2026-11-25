@@ -5,30 +5,78 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:prueba"
         mc:Ignorable="d"
-        Title="Login - SoundWafe" Height="450" Width="800"
+        Title="login"
+        Height="650" Width="1000"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
-        Background="#121212">
+        ResizeMode="CanResize"
+        Background="#121212"
+        FontFamily="Segoe UI">
 
-    <Grid>
-        <!-- contenedor centrado -->
-        <StackPanel Width="280" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <!-- Contenedor principal que ocupa toda la ventana maximizada -->
+    <Grid Background="#121212" Margin="40">
 
-            <!-- Título  -->
-            <TextBlock Text="SOUNDWAFE" Foreground="#27D92D" FontSize="20" FontWeight="Bold" 
-                       HorizontalAlignment="Center" Margin="0,0,0,25"/>
+        <!-- Tarjeta central del formulario: Width define el ancho base -->
+        <Border Background="#181818"
+                BorderBrush="#242424"
+                BorderThickness="1"
+                CornerRadius="12"
+                Width="560"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Padding="48,44">
 
-            <!-- Usuario -->
-            <TextBlock Text="Usuario" Foreground="DarkGray" FontSize="12" Margin="0,0,0,5"/>
-            <TextBox Height="35" Margin="0,0,0,15" Background="#1E1E1E" Foreground="White" BorderBrush="#333"/>
+            <!-- Escalado para el proyector: aumenta un 25% (1.25) todo el bloque sin deformarlo.
+                 Cambia ScaleX y ScaleY (ej. 1.1 o 1.4) si necesitas ajustarlo en sala -->
+            <Border.RenderTransform>
+                <ScaleTransform ScaleX="1.25" ScaleY="1.25" CenterX="280" CenterY="180"/>
+            </Border.RenderTransform>
 
-            <!-- Contraseña -->
-            <TextBlock Text="Contraseña" Foreground="DarkGray" FontSize="12" Margin="0,0,0,5"/>
-            <PasswordBox Height="35" Margin="0,0,0,25" Background="#1E1E1E" Foreground="White" BorderBrush="#333"/>
+            <!-- Apila verticalmente el título, las cajas de texto y el botón -->
+            <StackPanel>
 
-            <!-- Botón de entrar -->
-            <Button Content="Entrar" Height="40" Background="#27D92D" Foreground="Black" 
-                    FontWeight="Bold" Cursor="Hand" Click="Entrar_Click"/>
+                <!-- Título principal -->
+                <TextBlock Text="Iniciar sesión"
+                           Foreground="#FFFFFF"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,28"/>
 
-        </StackPanel>
+                <!-- Campo para escribir el nombre de usuario -->
+                <TextBox Height="44"
+                         FontSize="15"
+                         Margin="0,0,0,14"
+                         Text="Usuario"
+                         Background="#222222"
+                         Foreground="#FFFFFF"
+                         BorderBrush="#333333"
+                         BorderThickness="1"
+                         VerticalContentAlignment="Center"
+                         Padding="14,0"/>
+
+                <!-- Campo oculto para la contraseña -->
+                <PasswordBox Height="44"
+                             FontSize="15"
+                             Margin="0,0,0,22"
+                             Background="#222222"
+                             Foreground="#FFFFFF"
+                             BorderBrush="#333333"
+                             BorderThickness="1"
+                             VerticalContentAlignment="Center"
+                             Padding="14,0"/>
+
+                <!-- Botón verde principal que dispara el evento Entrar_Click en C# -->
+                <Button Content="Entrar"
+                        Height="46"
+                        FontSize="15"
+                        Background="#27D92D"
+                        Foreground="#121212"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        Click="Entrar_Click"/>
+
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
