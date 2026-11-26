@@ -1,0 +1,5 @@
+C:\Users\Usuario\source\repos\Desarrollo_interfaces_SoundWafe\SoundWave\SoundWave\obj\Debug\net10.0-windows\LoginWindow.g.cs
+C:\Users\Usuario\source\repos\Desarrollo_interfaces_SoundWafe\SoundWave\SoundWave\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\Usuario\source\repos\Desarrollo_interfaces_SoundWafe\SoundWave\SoundWave\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\Usuario\source\repos\Desarrollo_interfaces_SoundWafe\SoundWave\SoundWave\obj\Debug\net10.0-windows\SoundWave_MarkupCompile.cache
+C:\Users\Usuario\source\repos\Desarrollo_interfaces_SoundWafe\SoundWave\SoundWave\obj\Debug\net10.0-windows\SoundWave_MarkupCompile.lref

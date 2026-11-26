@@ -89,6 +89,26 @@ namespace prueba
             AplicarFiltroCantante("Todas");
         }
 
+
+
+        private void BtnAnadirLista_Click(object sender, RoutedEventArgs e)//para acceder a la ventana hija de crear lista y recoger el nombre con las canciones
+        {
+            NuevaListaWindow ventanaNuevaLista = new NuevaListaWindow
+            {
+                Owner = this
+            };
+
+            bool? resultado = ventanaNuevaLista.ShowDialog();
+
+            if (resultado == true)
+            {
+                string nombreNuevaLista = ventanaNuevaLista.NombreLista;
+                // Aquí puedes mostrar la lista en la interfaz o guardarla en Firebase Realtime Database
+                MessageBox.Show($"Lista creada: {nombreNuevaLista}", "SoundWave", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+
         private void FiltrarCanciones_Click(object sender, RoutedEventArgs e)//funcion organizadora
         {
             if (sender is Button botonPulsado && botonPulsado.Tag is string cantanteSeleccionado)
