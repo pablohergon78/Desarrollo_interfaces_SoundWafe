@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using prueba.Models;
+using prueba.Services;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -14,15 +17,6 @@ using System.Windows.Shapes;
 namespace prueba
 {
     // Modelo de datos para cada fila de la tabla de canciones
-    public class CancionItem
-    {
-        public string Numero { get; set; } = "";
-        public string Inicial { get; set; } = "";
-        public string Titulo { get; set; } = "";
-        public string Cantante { get; set; } = "";
-        public string Album { get; set; } = "";
-        public string Duracion { get; set; } = "";
-    }
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -30,13 +24,20 @@ namespace prueba
     public partial class MainWindow : Window
     {
         // Lista maestra con todas las canciones y lista temporal para el botón '+'
+        private FirebaseDatabaseService _dbService = new FirebaseDatabaseService();
+        public ObservableCollection<Lista> MisPlaylists { get; set; } = new ObservableCollection<Lista>();
         private readonly List<CancionItem> _todasLasCanciones = new List<CancionItem>();
         private readonly List<CancionItem> _miListaCanciones = new List<CancionItem>();
 
         public MainWindow()
         {
             InitializeComponent();
-            CargarCanciones();
+
+            // ESTA ES LA LÍNEA QUE FALTA:
+            lstPlaylists.ItemsSource = MisPlaylists;
+
+            _ = CargarPlaylistsDesdeFirebase();
+
         }
 
         private void MenuInicio_Click(object sender, RoutedEventArgs e)
@@ -69,28 +70,6 @@ namespace prueba
 
         }
 
-        private void CargarCanciones()//en un futuro ira aqui lo de fire base
-        {
-            _todasLasCanciones.Clear();
-
-            _todasLasCanciones.AddRange(new[]
-            {
-                new CancionItem { Titulo = "Lo que queda", Cantante = "Mara Vélez", Album = "Entre líneas", Duracion = "3:54" },
-                new CancionItem { Titulo = "Kilómetro cero", Cantante = "Los Días Largos", Album = "Campo abierto", Duracion = "4:28" },
-                new CancionItem { Titulo = "Luz de neón", Cantante = "Norte Magnético", Album = "Orbital", Duracion = "3:12" },
-                new CancionItem { Titulo = "Cerca del mar", Cantante = "Silva", Album = "Agua dulce", Duracion = "3:41" },
-                new CancionItem { Titulo = "Todo vuelve", Cantante = "Mara Vélez", Album = "Entre líneas", Duracion = "4:07" },
-                new CancionItem { Titulo = "A contraluz", Cantante = "Los Días Largos", Album = "Campo abierto", Duracion = "4:46" },
-                new CancionItem { Titulo = "Satélite", Cantante = "Norte Magnético", Album = "Orbital", Duracion = "3:35" },
-                new CancionItem { Titulo = "Otra ciudad", Cantante = "Silva", Album = "Agua dulce", Duracion = "3:22" },
-                new CancionItem { Titulo = "Domingo gris", Cantante = "Mara Vélez", Album = "Entre líneas", Duracion = "4:18" }
-            });
-
-            AplicarFiltroCantante("Todas");
-        }
-
-
-
         private void BtnAnadirLista_Click(object sender, RoutedEventArgs e)//para acceder a la ventana hija de crear lista y recoger el nombre con las canciones
         {
             NuevaListaWindow ventanaNuevaLista = new NuevaListaWindow
@@ -102,9 +81,7 @@ namespace prueba
 
             if (resultado == true)
             {
-                string nombreNuevaLista = ventanaNuevaLista.NombreLista;
-                // Aquí puedes mostrar la lista en la interfaz o guardarla en Firebase Realtime Database
-                MessageBox.Show($"Lista creada: {nombreNuevaLista}", "SoundWave", MessageBoxButton.OK, MessageBoxImage.Information);
+                _ = CargarPlaylistsDesdeFirebase();
             }
         }
 
@@ -167,6 +144,38 @@ namespace prueba
                     "SoundWafe",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
+            }
+        }
+        private async System.Threading.Tasks.Task CargarPlaylistsDesdeFirebase()
+        {
+            string json = await _dbService.ObtenerDatosAsync("playlists");
+
+            if (string.IsNullOrEmpty(json) || json == "null")
+            {
+                return; // No hay playlists o hubo un error
+            }
+
+            try
+            {
+                var opciones = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var diccionario = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Lista>>(json, opciones);
+
+                // Limpiamos la lista visual
+                MisPlaylists.Clear();
+
+                if (diccionario != null)
+                {
+                    foreach (var item in diccionario)
+                    {
+                        Lista p = item.Value;
+                        p.Id = item.Key; // Guardamos el ID (ej: "-Nxyz123")
+                        MisPlaylists.Add(p);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar listas: " + ex.Message);
             }
         }
     }
