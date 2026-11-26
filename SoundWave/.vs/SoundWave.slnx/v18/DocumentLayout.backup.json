@@ -1,14 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Tribbi\\source\\repos\\SoundWave\\",
+  "WorkspaceRootPath": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CB946141-841B-445E-ADF3-6E8FD59020E3}|SoundWave\\SoundWave.csproj|c:\\users\\tribbi\\source\\repos\\soundwave\\soundwave\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CB946141-841B-445E-ADF3-6E8FD59020E3}|SoundWave\\SoundWave.csproj|solutionrelative:soundwave\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\soundwave\\soundwave\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|solutionrelative:soundwave\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB946141-841B-445E-ADF3-6E8FD59020E3}|SoundWave\\SoundWave.csproj|c:\\users\\tribbi\\source\\repos\\soundwave\\soundwave\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB946141-841B-445E-ADF3-6E8FD59020E3}|SoundWave\\SoundWave.csproj|solutionrelative:soundwave\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\soundwave\\soundwave\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|solutionrelative:soundwave\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\soundwave\\soundwave\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|solutionrelative:soundwave\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\soundwave\\soundwave\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|solutionrelative:soundwave\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\soundwave\\soundwave\\services\\sesionactual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|solutionrelative:soundwave\\services\\sesionactual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\soundwave\\soundwave\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|solutionrelative:soundwave\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\soundwave\\soundwave\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BC940AB-CEDF-9EE6-3004-14FBC5AD2A8D}|SoundWave\\SoundWave.csproj|solutionrelative:soundwave\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,19 +38,95 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d455e273-1acb-491f-b5c9-760a99044cf9}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "SoundWave\\LoginWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "SoundWave\\LoginWindow.xaml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T20:35:52.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "SoundWave\\LoginWindow.xaml",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\LoginWindow.xaml",
+              "RelativeToolTip": "SoundWave\\LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-11-16T20:34:11.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FirebaseDatabaseService.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\Services\\FirebaseDatabaseService.cs",
+              "RelativeDocumentMoniker": "SoundWave\\Services\\FirebaseDatabaseService.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\Services\\FirebaseDatabaseService.cs",
+              "RelativeToolTip": "SoundWave\\Services\\FirebaseDatabaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T20:12:07.008Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FirebaseAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\Services\\FirebaseAuthService.cs",
+              "RelativeDocumentMoniker": "SoundWave\\Services\\FirebaseAuthService.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\Services\\FirebaseAuthService.cs",
+              "RelativeToolTip": "SoundWave\\Services\\FirebaseAuthService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAQwDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T19:51:33.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SesionActual.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\Services\\SesionActual.cs",
+              "RelativeDocumentMoniker": "SoundWave\\Services\\SesionActual.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\Services\\SesionActual.cs",
+              "RelativeToolTip": "SoundWave\\Services\\SesionActual.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T19:25:19.411Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Tribbi\\source\\repos\\SoundWave\\SoundWave\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\MainWindow.xaml",
               "RelativeDocumentMoniker": "SoundWave\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Tribbi\\source\\repos\\SoundWave\\SoundWave\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\MainWindow.xaml",
               "RelativeToolTip": "SoundWave\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-11-16T19:18:19.621Z",
@@ -38,16 +134,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Tribbi\\source\\repos\\SoundWave\\SoundWave\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "SoundWave\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Tribbi\\source\\repos\\SoundWave\\SoundWave\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\MainWindow.xaml.cs",
               "RelativeToolTip": "SoundWave\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T19:18:19.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T19:18:19.201Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }

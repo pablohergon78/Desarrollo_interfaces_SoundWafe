@@ -8,23 +8,23 @@
     "net10.0-windows": []
   },
   "packageFolders": {
-    "C:\\Users\\Tribbi\\.nuget\\packages\\": {},
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tribbi\\source\\repos\\SoundWave\\SoundWave\\SoundWave.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\SoundWave.csproj",
       "projectName": "SoundWave",
-      "projectPath": "C:\\Users\\Tribbi\\source\\repos\\SoundWave\\SoundWave\\SoundWave.csproj",
-      "packagesPath": "C:\\Users\\Tribbi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tribbi\\source\\repos\\SoundWave\\SoundWave\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\SoundWave.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\SoundWave\\SoundWave\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Tribbi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

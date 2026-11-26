@@ -26,13 +26,12 @@
                 VerticalAlignment="Center"
                 Padding="48,44">
 
-            <!-- Escalado para el proyector: aumenta un 25% (1.25) todo el bloque sin deformarlo.
-                 Cambia ScaleX y ScaleY (ej. 1.1 o 1.4) si necesitas ajustarlo en sala -->
+            <!-- Escalado para el proyector: aumenta un 25% (1.25) todo el bloque sin deformarlo -->
             <Border.RenderTransform>
                 <ScaleTransform ScaleX="1.25" ScaleY="1.25" CenterX="280" CenterY="180"/>
             </Border.RenderTransform>
 
-            <!-- Apila verticalmente el título, las cajas de texto y el botón -->
+            <!-- Apila verticalmente el título, las cajas de texto, el botón y el mensaje de estado -->
             <StackPanel>
 
                 <!-- Título principal -->
@@ -43,11 +42,11 @@
                            HorizontalAlignment="Center"
                            Margin="0,0,0,28"/>
 
-                <!-- Campo para escribir el nombre de usuario -->
-                <TextBox Height="44"
+                <!-- Campo para escribir el correo electrónico -->
+                <TextBox x:Name="txtEmail"
+                         Height="44"
                          FontSize="15"
                          Margin="0,0,0,14"
-                         Text="Usuario"
                          Background="#222222"
                          Foreground="#FFFFFF"
                          BorderBrush="#333333"
@@ -56,7 +55,8 @@
                          Padding="14,0"/>
 
                 <!-- Campo oculto para la contraseña -->
-                <PasswordBox Height="44"
+                <PasswordBox x:Name="txtPassword"
+                             Height="44"
                              FontSize="15"
                              Margin="0,0,0,22"
                              Background="#222222"
@@ -66,15 +66,25 @@
                              VerticalContentAlignment="Center"
                              Padding="14,0"/>
 
-                <!-- Botón verde principal que dispara el evento Entrar_Click en C# -->
-                <Button Content="Entrar"
+                <!-- Botón verde principal -->
+                <Button x:Name="btnEntrar"
+                        Content="Entrar"
                         Height="46"
                         FontSize="15"
                         Background="#27D92D"
                         Foreground="#121212"
                         FontWeight="Bold"
                         Cursor="Hand"
-                        Click="Entrar_Click"/>
+                        Click="btnEntrar_Click"/>
+
+                <!-- Mensaje de estado o error -->
+                <TextBlock x:Name="lblMensaje"
+                           Text=""
+                           FontSize="13"
+                           Margin="0,14,0,0"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Foreground="#9BA3B0"/>
 
             </StackPanel>
         </Border>
