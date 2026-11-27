@@ -60,7 +60,7 @@ namespace prueba {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/prueba;component/agregarelementosextra.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/prueba;V1.0.0.0;component/agregarelementosextra.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\agregarelementosextra.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

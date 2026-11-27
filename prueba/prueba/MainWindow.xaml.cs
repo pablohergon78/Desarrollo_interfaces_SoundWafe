@@ -178,21 +178,81 @@ namespace prueba
                 MessageBox.Show("Error al cargar listas: " + ex.Message);
             }
         }
-
-        public ObservableCollection<Lista> Playlists { get; set; } = new ObservableCollection<Lista>();
-
-        private void LstPlaylists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private readonly Dictionary<string, List<FilaCancion>> _datosListas = new Dictionary<string, List<FilaCancion>>();
+        private string _nombreListaActual = "";
+        private void CargarListasDePrueba()
         {
-            if (lstPlaylists.SelectedItem is Lista listaSeleccionada)
-            {
-                txtTituloListaActual.Text = listaSeleccionada.Nombre;
-                lstCancionesDeLista.ItemsSource = listaSeleccionada.Canciones; // Cambia 'Canciones' por el nombre de la colección de tu clase Lista
+            _datosListas.Clear();
 
-                gridListasPrincipal.Visibility = Visibility.Collapsed;
-                gridDetalleLista.Visibility = Visibility.Visible;
+            _datosListas["Favoritas"] = new List<FilaCancion>
+            {
+                new FilaCancion { Numero = "1", Inicial = "S", Titulo = "Starboy", Cantante = "The Weeknd", Album = "Starboy", Duracion = "03:50" },
+                new FilaCancion { Numero = "2", Inicial = "M", Titulo = "Midnight City", Cantante = "M83", Album = "Hurry Up, We're Dreaming", Duracion = "04:03" },
+                new FilaCancion { Numero = "3", Inicial = "B", Titulo = "Blinding Lights", Cantante = "The Weeknd", Album = "After Hours", Duracion = "03:20" }
+            };
+
+            _datosListas["Entreno"] = new List<FilaCancion>
+            {
+                new FilaCancion { Numero = "1", Inicial = "L", Titulo = "Levitating", Cantante = "Dua Lipa", Album = "Future Nostalgia", Duracion = "03:23" },
+                new FilaCancion { Numero = "2", Inicial = "T", Titulo = "Titanium", Cantante = "David Guetta", Album = "Nothing but the Beat", Duracion = "04:05" }
+            };
+
+            lstPlaylists.Items.Clear();
+            foreach (var nombre in _datosListas.Keys)
+            {
+                lstPlaylists.Items.Add(nombre);
             }
         }
-        private void BtnAnadirCancionesALista_Click(object sender, RoutedEventArgs e)
+
+        private void lstPlaylists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstPlaylists.SelectedItem == null) return;
+
+            _nombreListaActual = lstPlaylists.SelectedItem.ToString();
+            txtTituloListaActual.Text = _nombreListaActual;
+
+            MostrarCancionesOrdenadasYDuracion();
+
+            gridListasPrincipal.Visibility = Visibility.Collapsed;
+            spDetalleLista.Visibility = Visibility.Visible;
+        }
+
+        private void CmbOrdenCanciones_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(_nombreListaActual) || dgCancionesPlaylist == null) return;
+            MostrarCancionesOrdenadasYDuracion();
+        }
+
+        private void MostrarCancionesOrdenadasYDuracion()
+        {
+            if (!_datosListas.TryGetValue(_nombreListaActual, out var canciones)) return;
+
+            string opcionOrden = (cmbOrdenCanciones?.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Nombre";
+
+            List<FilaCancion> listaOrdenada = opcionOrden == "Duración"
+                ? canciones.OrderBy(c => SegundosDesdeTexto(c.Duracion)).ToList()
+                : canciones.OrderBy(c => c.Titulo, StringComparer.CurrentCultureIgnoreCase).ToList();
+
+            dgCancionesPlaylist.ItemsSource = listaOrdenada;
+
+            int totalSeg = canciones.Sum(c => SegundosDesdeTexto(c.Duracion));
+            txtDuracionTotal.Text = $"Duración total: {totalSeg / 60:00}:{totalSeg % 60:00}";
+        }
+
+        private int SegundosDesdeTexto(string duracion)
+        {
+            if (string.IsNullOrWhiteSpace(duracion)) return 0;
+            var partes = duracion.Split(':');
+            if (partes.Length == 2 &&
+                int.TryParse(partes[0], out int min) &&
+                int.TryParse(partes[1], out int seg))
+            {
+                return min * 60 + seg;
+            }
+            return 0;
+        }
+
+        private void btnAgregarCanciones_Click(object sender, RoutedEventArgs e)
         {
             var ventana = new agregarcancionesextra
             {
@@ -201,11 +261,26 @@ namespace prueba
 
             ventana.Show();
         }
+
         private void BtnVolverListas_Click(object sender, RoutedEventArgs e)
         {
+            _nombreListaActual = "";
             lstPlaylists.SelectedItem = null;
-            gridDetalleLista.Visibility = Visibility.Collapsed;
+            spDetalleLista.Visibility = Visibility.Collapsed;
             gridListasPrincipal.Visibility = Visibility.Visible;
         }
+
+       
+    }
+
+    public class FilaCancion
+    {
+        public string Numero { get; set; } = "";
+        public string Inicial { get; set; } = "";
+        public string Titulo { get; set; } = "";
+        public string Cantante { get; set; } = "";
+        public string Album { get; set; } = "";
+        public string Duracion { get; set; } = "";
     }
 }
+    

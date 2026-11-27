@@ -489,7 +489,7 @@
 
                 <!-- Pestaña 4: Mis Listas -->
                 <TabItem Header="Mis Listas">
-                    <Grid Margin="40">
+                    <Grid Margin="30" Background="#121212">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
@@ -497,12 +497,12 @@
 
                         <TextBlock Grid.Row="0"
                    Text="Sección de Mis Listas"
-                   Foreground="White"
+                   Foreground="#27D92D"
                    FontSize="22"
                    FontWeight="Bold"
-                   Margin="0,0,0,24"/>
+                   Margin="0,0,0,20"/>
 
-                        <!-- VISTA 1: Botón "+" a la izquierda y ListBox de playlists a la derecha -->
+                        <!-- Vista principal: botón "+" y ListBox de listas -->
                         <Grid Grid.Row="1" x:Name="gridListasPrincipal" Visibility="Visible">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -514,7 +514,7 @@
                     Content="+"
                     Width="100"
                     Height="100"
-                    FontSize="72"
+                    FontSize="64"
                     FontWeight="Bold"
                     Foreground="#121212"
                     Background="#27D92D"
@@ -528,100 +528,117 @@
                      x:Name="lstPlaylists"
                      Margin="20,0,0,0"
                      Background="#141414"
-                     Foreground="White"
+                     Foreground="#FFFFFF"
                      BorderBrush="#2A2A2A"
-                     HorizontalContentAlignment="Stretch"
-                     DisplayMemberPath="Nombre"
-                     FontSize="32"
-                     SelectionChanged="LstPlaylists_SelectionChanged"/>
+                     FontSize="28"
+                     SelectionChanged="lstPlaylists_SelectionChanged"/>
                         </Grid>
 
-                        <!-- VISTA 2: Nombre de la lista arriba y listado de canciones debajo -->
-                        <Grid Grid.Row="1" x:Name="gridDetalleLista" Visibility="Collapsed">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
+                        <!-- StackPanel de detalle al pulsar una lista -->
+                        <StackPanel Grid.Row="1"
+                    x:Name="spDetalleLista"
+                    Orientation="Vertical"
+                    Background="#121212"
+                    Visibility="Collapsed">
 
-                            <DockPanel Grid.Row="0" Margin="0,0,0,16" LastChildFill="True">
+                            <DockPanel LastChildFill="True" Margin="0,0,0,12">
                                 <Button DockPanel.Dock="Left"
                         x:Name="btnVolverListas"
                         Content="← Volver"
-                        Padding="14,6"
+                        Padding="12,6"
                         Margin="0,0,10,0"
                         Background="#222222"
-                        Foreground="White"
+                        Foreground="#FFFFFF"
                         BorderBrush="#3A3A3A"
                         Cursor="Hand"
                         Click="BtnVolverListas_Click"/>
 
-                                <!-- Botón a la izquierda del nombre de la lista que abre agregarcancionesextra -->
                                 <Button DockPanel.Dock="Left"
-                        x:Name="btnAnadirCancionesALista"
+                        x:Name="btnAgregarCanciones"
                         Content="+ Canciones"
-                        Padding="14,6"
-                        Margin="0,0,16,0"
+                        Padding="12,6"
+                        Margin="0,0,14,0"
                         Background="#27D92D"
                         Foreground="#121212"
                         FontWeight="Bold"
                         Cursor="Hand"
-                        Click="BtnAnadirCancionesALista_Click"/>
+                        Click="btnAgregarCanciones_Click"/>
 
+                                <TextBlock DockPanel.Dock="Right"
+                           x:Name="txtDuracionTotal"
+                           Text="Duración total: 00:00"
+                           Foreground="#9BA3B0"
+                           FontSize="16"
+                           VerticalAlignment="Center"
+                           Margin="12,0,0,0"/>
+
+                                <!-- Título de la lista actual con contraste claro sobre fondo oscuro -->
                                 <TextBlock x:Name="txtTituloListaActual"
                            Text=""
                            Foreground="#27D92D"
-                           FontSize="28"
+                           FontSize="26"
                            FontWeight="Bold"
                            VerticalAlignment="Center"/>
                             </DockPanel>
 
-                            <ListBox Grid.Row="1"
-                     x:Name="lstCancionesDeLista"
-                     Background="#141414"
-                     Foreground="White"
-                     BorderBrush="#2A2A2A"
-                     HorizontalContentAlignment="Stretch">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Padding="12,8"
-                                BorderBrush="#242424"
-                                BorderThickness="0,0,0,1">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="36"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
+                            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,0,10">
+                                <TextBlock Text="Ordenar: "
+                           Foreground="#9BA3B0"
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="0,0,6,0"/>
+                                <ComboBox x:Name="cmbOrdenCanciones"
+                          Width="140"
+                          Foreground="#121212"
+                          Background="#FFFFFF"
+                          SelectedIndex="0"
+                          SelectionChanged="CmbOrdenCanciones_SelectionChanged">
+                                    <ComboBoxItem Content="Nombre" Foreground="#121212" Background="#FFFFFF"/>
+                                    <ComboBoxItem Content="Duración" Foreground="#121212" Background="#FFFFFF"/>
+                                </ComboBox>
+                            </StackPanel>
 
-                                                <TextBlock Grid.Column="0"
-                                           Text="{Binding Numero}"
-                                           Foreground="#9BA3B0"
-                                           FontSize="14"
-                                           VerticalAlignment="Center"/>
-
-                                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                                    <TextBlock Text="{Binding Titulo}"
-                                               Foreground="White"
-                                               FontSize="15"
-                                               FontWeight="SemiBold"/>
-                                                    <TextBlock Foreground="#9BA3B0" FontSize="12">
-                                        <Run Text="{Binding Cantante}"/>
-                                        <Run Text=" • "/>
-                                        <Run Text="{Binding Album}"/>
-                                                    </TextBlock>
-                                                </StackPanel>
-
-                                                <TextBlock Grid.Column="2"
-                                           Text="{Binding Duracion}"
-                                           Foreground="#9BA3B0"
-                                           FontSize="13"
-                                           VerticalAlignment="Center"/>
-                                            </Grid>
-                                        </Border>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </Grid>
+                            <DataGrid x:Name="dgCancionesPlaylist"
+                      Height="360"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      Background="#141414"
+                      Foreground="#FFFFFF"
+                      RowBackground="#181818"
+                      AlternatingRowBackground="#1E1E1E"
+                      BorderBrush="#2A2A2A"
+                      GridLinesVisibility="Horizontal"
+                      HorizontalGridLinesBrush="#2A2A2A">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Background" Value="#202020"/>
+                                        <Setter Property="Foreground" Value="#27D92D"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="Padding" Value="10,6"/>
+                                        <Setter Property="BorderBrush" Value="#2A2A2A"/>
+                                        <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="Foreground" Value="#FFFFFF"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Padding" Value="10,6"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="#" Binding="{Binding Numero}" Width="45"/>
+                                    <DataGridTextColumn Header="Título" Binding="{Binding Titulo}" Width="*"/>
+                                    <DataGridTextColumn Header="Cantante" Binding="{Binding Cantante}" Width="*"/>
+                                    <DataGridTextColumn Header="Álbum" Binding="{Binding Album}" Width="*"/>
+                                    <DataGridTextColumn Header="Duración" Binding="{Binding Duracion}" Width="85"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
                     </Grid>
                 </TabItem>
             </TabControl>
