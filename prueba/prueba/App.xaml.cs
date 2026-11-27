@@ -5,7 +5,7 @@ using System.Windows;
 namespace prueba
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Configuración inicial de la aplicación.
     /// </summary>
     public partial class App : Application
     {

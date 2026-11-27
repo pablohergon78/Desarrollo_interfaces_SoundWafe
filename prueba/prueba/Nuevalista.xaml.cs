@@ -19,11 +19,11 @@ namespace prueba // Asegúrate de que coincide con tu namespace (el tuyo pone 'p
             InitializeComponent();
             lstCanciones.ItemsSource = Canciones;
 
-            // Llamamos a la carga real de Firebase
+            // Carga las canciones de Firebase.
             _ = CargarCancionesDesdeFirebase();
         }
 
-        // Cambiamos el método para que sea async y traiga datos reales
+        // Carga las canciones disponibles.
         private async System.Threading.Tasks.Task CargarCancionesDesdeFirebase()
         {
             Canciones.Clear();
@@ -41,7 +41,7 @@ namespace prueba // Asegúrate de que coincide con tu namespace (el tuyo pone 'p
 
             foreach (var item in diccionario)
             {
-                // Convertimos la canción de Firebase al objeto que espera tu compañero en la UI
+                // Adapta la canción al formato de la ventana.
                 Canciones.Add(new CancionItem
                 {
                     Id = item.Key, // El ID de Firebase
@@ -56,8 +56,7 @@ namespace prueba // Asegúrate de que coincide con tu namespace (el tuyo pone 'p
 
         private async void BtnGuardar_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Obtener el nombre de la lista (IMPORTANTE: Necesitas un TextBox en el XAML llamado txtNombreLista)
-            // Si tu compañero no lo ha puesto, avísale.
+            // Obtiene el nombre escrito en el formulario.
             string nombre = txtNombreLista.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(nombre))
@@ -66,7 +65,7 @@ namespace prueba // Asegúrate de que coincide con tu namespace (el tuyo pone 'p
                 return;
             }
 
-            // 2. Recoger las canciones seleccionadas
+            // Obtiene las canciones seleccionadas.
             CancionesSeleccionadas = Canciones.Where(c => c.EstaSeleccionada).ToList();
 
             if (CancionesSeleccionadas.Count == 0)
@@ -75,14 +74,14 @@ namespace prueba // Asegúrate de que coincide con tu namespace (el tuyo pone 'p
                 return;
             }
 
-            // 3. Crear el diccionario que espera Firebase: { "idCancion": true }
+            // Prepara las canciones para Firebase.
             Dictionary<string, bool> dictCanciones = new Dictionary<string, bool>();
             foreach (var cancion in CancionesSeleccionadas)
             {
                 dictCanciones.Add(cancion.Id, true);
             }
 
-            // 4. Enviar a Firebase
+            // Guarda la lista en Firebase.
             bool exito = await _dbService.CrearPlaylistCompletaAsync(nombre, dictCanciones);
 
             if (exito)

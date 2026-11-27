@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic; // Necesario para Dictionary
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks; // Necesario para Task
+using System.Threading.Tasks;
 
 namespace prueba.Services
 {
@@ -13,9 +13,7 @@ namespace prueba.Services
 
         public string? LastError { get; private set; }
 
-        // =========================================================================
-        // 1. GET - LEER DATOS PRIVADOS DEL USUARIO (Playlists)
-        // =========================================================================
+        // Lee las listas del usuario actual.
         public async Task<string> ObtenerDatosAsync(string ruta)
         {
             LastError = null;
@@ -40,9 +38,7 @@ namespace prueba.Services
             catch (HttpRequestException ex) { LastError = $"No se pudo conectar con Firebase: {ex.Message}"; return null; }
         }
 
-        // =========================================================================
-        // 2. GET - LEER EL CATÁLOGO GLOBAL (Canciones)
-        // =========================================================================
+        // Lee datos del catálogo general.
         public async Task<string> ObtenerCatalogoAsync(string ruta)
         {
             LastError = null;
@@ -67,9 +63,7 @@ namespace prueba.Services
             return $"Firebase devolvió {(int)respuesta.StatusCode} ({respuesta.ReasonPhrase}): {detalle}";
         }
 
-        // =========================================================================
-        // 3. POST - CREAR UNA PLAYLIST COMPLETA (Con o sin canciones)
-        // =========================================================================
+        // Crea una lista con sus canciones.
         public async Task<bool> CrearPlaylistCompletaAsync(string nombrePlaylist, Dictionary<string, bool> cancionesSeleccionadas)
         {
             LastError = null;
@@ -94,24 +88,22 @@ namespace prueba.Services
             catch (HttpRequestException ex) { LastError = $"No se pudo conectar con Firebase: {ex.Message}"; return false; }
         }
 
-        // =========================================================================
-        // 4. PATCH - AÑADIR UNA CANCIÓN A UNA PLAYLIST EXISTENTE
-        // =========================================================================
+        // Añade una canción a una lista existente.
         public async Task<bool> AnadirCancionAPlaylistAsync(string idPlaylist, string idCancion)
         {
-            // Vamos a la caja de "canciones" de esa playlist específica
+            // Accede a las canciones de esa lista.
             string url = $"{BaseUrl}/usuarios/{SesionActual.Uid}/playlists/{idPlaylist}/canciones.json?auth={SesionActual.Token}";
 
             using (HttpClient client = new HttpClient())
             {
-                // Creamos un mini objeto: { "can_01": true }
+                // Crea el registro de la canción.
                 var nuevaCancion = new Dictionary<string, bool> { { idCancion, true } };
                 string json = JsonSerializer.Serialize(nuevaCancion);
                 var contenido = new StringContent(json, Encoding.UTF8, "application/json");
 
                 try
                 {
-                    // PATCH fusiona esto sin borrar las canciones que ya hubiera
+                    // Añade el registro sin borrar los anteriores.
                     HttpResponseMessage respuesta = await client.PatchAsync(url, contenido);
                     return respuesta.IsSuccessStatusCode;
                 }
@@ -119,9 +111,7 @@ namespace prueba.Services
             }
         }
 
-        // =========================================================================
-        // 5. DELETE - BORRAR UNA PLAYLIST ENTERA
-        // =========================================================================
+        // Borra una lista completa.
         public async Task<bool> EliminarDatoAsync(string ruta, string idRegistro)
         {
             string url = $"{BaseUrl}/usuarios/{SesionActual.Uid}/{ruta}/{idRegistro}.json?auth={SesionActual.Token}";

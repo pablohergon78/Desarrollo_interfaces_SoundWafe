@@ -13,7 +13,7 @@ namespace prueba.Models
         [JsonPropertyName("nombre")]
         public string Nombre { get; set; }
 
-        // El diccionario que guarda las canciones: { "can_01": true }
+        // Guarda los identificadores de las canciones de la lista.
         [JsonPropertyName("canciones")]
         public Dictionary<string, bool> Canciones { get; set; }
     }

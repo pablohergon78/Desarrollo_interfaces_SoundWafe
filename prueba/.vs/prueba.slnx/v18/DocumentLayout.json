@@ -3,36 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\agregarelementosextra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\agregarelementosextra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\agregarelementosextra.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\agregarelementosextra.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\nuevalista.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\nuevalista.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\nuevalista.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\nuevalista.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\agregarelementosextra.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\agregarelementosextra.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\models\\lista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\models\\lista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\models\\cancionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,20 +31,47 @@
       "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\models\\cancion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\services\\firebasedatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\.copilot\\plans\\plan-integrar-el-contenido-de-firebase-en-la-interfaz.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownSecurePreview"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\models\\album.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\models\\album.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\services\\sesionactual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\services\\sesionactual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\services\\firebaseauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\agregarelementosextra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\agregarelementosextra.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\nuevalista.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\nuevalista.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\services\\sesionactual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\services\\sesionactual.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\prueba.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -65,10 +80,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|c:\\users\\usuario\\source\\repos\\desarrollo_interfaces_soundwafe\\prueba\\prueba\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6E3124D3-D713-A4D5-1C95-175165E4E821}|prueba\\prueba.csproj|solutionrelative:prueba\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,7 +89,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Bookmark",
@@ -106,7 +117,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "login.xaml",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\login.xaml",
+              "RelativeDocumentMoniker": "prueba\\login.xaml",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\login.xaml",
+              "RelativeToolTip": "prueba\\login.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-11-27T11:46:47.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Lista.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\Lista.cs",
+              "RelativeDocumentMoniker": "prueba\\Models\\Lista.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\Lista.cs",
+              "RelativeToolTip": "prueba\\Models\\Lista.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-27T11:46:33.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\MainWindow.xaml",
               "RelativeDocumentMoniker": "prueba\\MainWindow.xaml",
@@ -118,58 +154,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "prueba\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\MainWindow.xaml.cs",
               "RelativeToolTip": "prueba\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-26T10:22:02.249Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "agregarelementosextra.xaml",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\agregarelementosextra.xaml",
-              "RelativeDocumentMoniker": "prueba\\agregarelementosextra.xaml",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\agregarelementosextra.xaml",
-              "RelativeToolTip": "prueba\\agregarelementosextra.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-11-27T08:46:02.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "FirebaseDatabaseService.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Services\\FirebaseDatabaseService.cs",
               "RelativeDocumentMoniker": "prueba\\Services\\FirebaseDatabaseService.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Services\\FirebaseDatabaseService.cs",
               "RelativeToolTip": "prueba\\Services\\FirebaseDatabaseService.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAUwEYAAABGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-26T07:52:35.747Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Nuevalista.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Nuevalista.xaml.cs",
-              "RelativeDocumentMoniker": "prueba\\Nuevalista.xaml.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Nuevalista.xaml.cs",
-              "RelativeToolTip": "prueba\\Nuevalista.xaml.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAawFMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-26T09:54:25.893Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "CancionItem.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\CancionItem.cs",
               "RelativeDocumentMoniker": "prueba\\Models\\CancionItem.cs",
@@ -177,23 +188,102 @@
               "RelativeToolTip": "prueba\\Models\\CancionItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-26T09:55:01.542Z"
+              "WhenOpened": "2026-11-26T09:55:01.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FirebaseAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Services\\FirebaseAuthService.cs",
+              "RelativeDocumentMoniker": "prueba\\Services\\FirebaseAuthService.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Services\\FirebaseAuthService.cs",
+              "RelativeToolTip": "prueba\\Services\\FirebaseAuthService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAqwEwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-26T07:51:47.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Cancion.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\Cancion.cs",
+              "RelativeDocumentMoniker": "prueba\\Models\\Cancion.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\Cancion.cs",
+              "RelativeToolTip": "prueba\\Models\\Cancion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-26T10:13:33.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\App.xaml.cs",
+              "RelativeDocumentMoniker": "prueba\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\App.xaml.cs",
+              "RelativeToolTip": "prueba\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-25T15:26:34.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Nuevalista.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Nuevalista.xaml.cs",
+              "RelativeDocumentMoniker": "prueba\\Nuevalista.xaml.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Nuevalista.xaml.cs",
+              "RelativeToolTip": "prueba\\Nuevalista.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-26T09:54:25.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "agregarelementosextra.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\agregarelementosextra.xaml.cs",
+              "RelativeDocumentMoniker": "prueba\\agregarelementosextra.xaml.cs",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\agregarelementosextra.xaml.cs",
+              "RelativeToolTip": "prueba\\agregarelementosextra.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-27T08:46:40.729Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "plan-integrar-el-contenido-de-firebase-en-la-interfaz.md [Versi\u00F3n preliminar]",
+              "DocumentMoniker": "C:\\Users\\Usuario\\.copilot\\plans\\plan-integrar-el-contenido-de-firebase-en-la-interfaz.md",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\.copilot\\plans\\plan-integrar-el-contenido-de-firebase-en-la-interfaz.md",
+              "ToolTip": "C:\\Users\\Usuario\\.copilot\\plans\\plan-integrar-el-contenido-de-firebase-en-la-interfaz.md [Versi\u00F3n preliminar]",
+              "RelativeToolTip": "..\\..\\..\\..\\.copilot\\plans\\plan-integrar-el-contenido-de-firebase-en-la-interfaz.md [Versi\u00F3n preliminar]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-11-27T11:46:06.403Z",
+              "EditorCaption": " [Versi\u00F3n preliminar]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Album.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\Album.cs",
               "RelativeDocumentMoniker": "prueba\\Models\\Album.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\Album.cs",
               "RelativeToolTip": "prueba\\Models\\Album.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAABQwAcAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-26T10:13:22.372Z"
+              "WhenOpened": "2026-11-26T10:13:22.372Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Artista.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\Artista.cs",
               "RelativeDocumentMoniker": "prueba\\Models\\Artista.cs",
@@ -201,35 +291,34 @@
               "RelativeToolTip": "prueba\\Models\\Artista.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-26T10:13:29.537Z"
+              "WhenOpened": "2026-11-26T10:13:29.537Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Cancion.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\Cancion.cs",
-              "RelativeDocumentMoniker": "prueba\\Models\\Cancion.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Models\\Cancion.cs",
-              "RelativeToolTip": "prueba\\Models\\Cancion.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAABQwAcAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-26T10:13:33.853Z"
+              "DocumentIndex": 14,
+              "Title": "agregarelementosextra.xaml",
+              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\agregarelementosextra.xaml",
+              "RelativeDocumentMoniker": "prueba\\agregarelementosextra.xaml",
+              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\agregarelementosextra.xaml",
+              "RelativeToolTip": "prueba\\agregarelementosextra.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-11-27T08:46:02.183Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 16,
               "Title": "Nuevalista.xaml",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Nuevalista.xaml",
               "RelativeDocumentMoniker": "prueba\\Nuevalista.xaml",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Nuevalista.xaml",
               "RelativeToolTip": "prueba\\Nuevalista.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-11-26T09:18:34.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-26T09:18:34.925Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 15,
               "Title": "login.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\login.xaml.cs",
               "RelativeDocumentMoniker": "prueba\\login.xaml.cs",
@@ -237,24 +326,11 @@
               "RelativeToolTip": "prueba\\login.xaml.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-25T14:22:44.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-25T14:22:44.943Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "agregarelementosextra.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\agregarelementosextra.xaml.cs",
-              "RelativeDocumentMoniker": "prueba\\agregarelementosextra.xaml.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\agregarelementosextra.xaml.cs",
-              "RelativeToolTip": "prueba\\agregarelementosextra.xaml.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAswBIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-27T08:46:40.729Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "SesionActual.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Services\\SesionActual.cs",
               "RelativeDocumentMoniker": "prueba\\Services\\SesionActual.cs",
@@ -266,19 +342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "FirebaseAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Services\\FirebaseAuthService.cs",
-              "RelativeDocumentMoniker": "prueba\\Services\\FirebaseAuthService.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\Services\\FirebaseAuthService.cs",
-              "RelativeToolTip": "prueba\\Services\\FirebaseAuthService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAIBHwEwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-26T07:51:47.465Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "prueba.csproj",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\prueba.csproj",
               "RelativeDocumentMoniker": "prueba\\prueba.csproj",
@@ -290,19 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\App.xaml.cs",
-              "RelativeDocumentMoniker": "prueba\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\App.xaml.cs",
-              "RelativeToolTip": "prueba\\App.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-25T15:26:34.633Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\App.xaml",
               "RelativeDocumentMoniker": "prueba\\App.xaml",
@@ -311,10 +363,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-11-18T12:06:51.803Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
             }
           ]
         },

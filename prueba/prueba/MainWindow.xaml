@@ -11,7 +11,7 @@
         Background="#090B0E">
 
     <Window.Resources>
-        <!-- Estilo unificado y corregido para los botones del menú -->
+        <!-- Estilo de los botones del menú. -->
         <Style x:Key="MenuButtonStyle" TargetType="Button">
             <Setter Property="Height" Value="40"/>
             <Setter Property="Margin" Value="0,0,0,8"/>
@@ -24,12 +24,12 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="8">
-                            <!-- IMPORTANTE: TextElement.Foreground permite que el texto herede el color del botón correctamente -->
+                            <!-- Permite que el texto herede el color del botón. -->
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"
                                               TextElement.Foreground="{TemplateBinding Foreground}"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <!-- Efecto Hover: Cambia el fondo a un gris oscuro elegante y el texto a verde clarito -->
+                            <!-- Cambia el color al pasar el ratón. -->
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="#1A1F26"/>
                                 <Setter Property="Foreground" Value="#32F238"/>
@@ -47,7 +47,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- ================= 1. MENÚ LATERAL IZQUIERDO ================= -->
+        <!-- Menú lateral. -->
         <Border Grid.Column="0" Background="#000000" Padding="20">
             <Grid>
                 <Grid.RowDefinitions>
@@ -67,7 +67,7 @@
                     <TextBlock Text="SoundWafe" Foreground="White" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <!-- Botones de navegación (Los cuatro idénticos) -->
+                <!-- Botones de navegación. -->
                 <StackPanel Grid.Row="1">
                     <Button x:Name="BtnInicio" Content="🏠   Inicio" Click="MenuInicio_Click" Style="{StaticResource MenuButtonStyle}"/>
                     <Button x:Name="BtnArtistas" Content="💿   Artistas y álbumes" Click="MenuArtistas_Click" Style="{StaticResource MenuButtonStyle}"/>
@@ -88,7 +88,7 @@
             </Grid>
         </Border>
 
-        <!-- ================= 2. CONTENIDO Y BARRA SUPERIOR ================= -->
+        <!-- Contenido principal y barra superior. -->
         <Grid Grid.Column="1" Background="#0D0F12">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -117,7 +117,7 @@
                         <StackPanel Margin="40">
 
                             <StackPanel.Resources>
-                                <!-- Estilo de las tarjetas de éxitos: se iluminan con el borde verde al pasar el ratón -->
+                                <!-- Estilo de las tarjetas de éxitos. -->
                                 <Style x:Key="TarjetaExito" TargetType="Border">
                                     <Setter Property="Background" Value="#161A22"/>
                                     <Setter Property="BorderBrush" Value="Transparent"/>
@@ -188,22 +188,25 @@
                             </UniformGrid>
 
                             <TextBlock Text="Mis Listas" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,0,15"/>
-                            <UniformGrid Columns="3" Height="100">
-                                <Border Background="#161A22" CornerRadius="8" Margin="0,0,10,0" Padding="15">
-                                    <TextBlock Text="Modo foco" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Background="#161A22" CornerRadius="8" Margin="0,0,10,0" Padding="15">
-                                    <TextBlock Text="Sube el ritmo" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
-                                </Border>
-                                <Border Background="#161A22" CornerRadius="8" Padding="15">
-                                    <TextBlock Text="En carretera" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
-                                </Border>
-                            </UniformGrid>
+                            <ItemsControl x:Name="lstPlaylistsInicio" Height="100">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="3"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="#161A22" CornerRadius="8" Margin="0,0,10,0" Padding="15">
+                                            <TextBlock Text="{Binding Nombre}" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
 
-                <!-- Pestaña 2: Artistas y Álbumnes -->
+                <!-- Artistas y álbumes. -->
                 <TabItem>
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="40,32">
                         <StackPanel>
@@ -241,7 +244,7 @@
                        Foreground="#FFFFFF"
                        Margin="0,0,0,16"/>
 
-                            <!-- Artistas (se rellena desde Firebase: catalogo/artistas) -->
+                            <!-- Lista de artistas de Firebase. -->
                             <ItemsControl x:Name="lstArtistas" Margin="0,0,-16,38">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -275,7 +278,7 @@
                        Foreground="#FFFFFF"
                        Margin="0,0,0,16"/>
 
-                            <!-- Álbumes (se rellena desde Firebase: catalogo/albumes) -->
+                            <!-- Lista de álbumes de Firebase. -->
                             <ItemsControl x:Name="lstAlbumes" Margin="0,0,-16,0">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -309,8 +312,7 @@
                     </ScrollViewer>
                 </TabItem>
 
-                <!-- Pestaña 3: Canciones -->
-                <!-- Pestaña 3: Canciones -->
+                <!-- Canciones. -->
                 <TabItem Header="Canciones">
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="40,32" Background="#121212">
                         <StackPanel>
@@ -329,7 +331,7 @@
                        Foreground="#FFFFFF"
                        Margin="0,0,0,6"/>
 
-                            <!-- Contador dinámico -->
+                            <!-- Número de canciones cargadas. -->
                             <TextBlock x:Name="TxtContadorCanciones"
                        Text="0 canciones esperando su próxima lista."
                        Foreground="#8E96A4"
@@ -352,7 +354,7 @@
 
                             <Border Height="1" Background="#1C2028" Margin="0,0,0,4"/>
 
-                            <!-- Lista de todas las canciones -->
+                            <!-- Todas las canciones. -->
                             <ItemsControl x:Name="ListaCancionesControl">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
@@ -365,7 +367,7 @@
                                                     <ColumnDefinition Width="48"/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <!-- Título + Cantante -->
+                                                <!-- Título y artista. -->
                                                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
                                                     <TextBlock Text="{Binding Titulo}"
                                                Foreground="#F3F4F6"
@@ -392,7 +394,7 @@
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"/>
 
-                                                <!-- Botón circular '+' con evento Click -->
+                                                <!-- Añade la canción a una lista. -->
                                                 <Button Grid.Column="3"
                                         Content="+"
                                         Click="AgregarCancionLista_Click"
@@ -427,7 +429,7 @@
                     </ScrollViewer>
                 </TabItem>
 
-                <!-- Pestaña 4: Mis Listas -->
+                <!-- Mis listas. -->
                 <TabItem Header="Mis Listas">
                     <Grid Margin="30" Background="#121212">
                         <Grid.RowDefinitions>
@@ -442,7 +444,7 @@
                    FontWeight="Bold"
                    Margin="0,0,0,20"/>
 
-                        <!-- Vista principal: botón "+" y ListBox de listas -->
+                        <!-- Botón para crear listas y lista de listas. -->
                         <Grid Grid.Row="1" x:Name="gridListasPrincipal" Visibility="Visible">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -482,7 +484,7 @@
                              </ListBox>
                         </Grid>
 
-                        <!-- StackPanel de detalle al pulsar una lista -->
+                        <!-- Detalle de la lista seleccionada. -->
                         <StackPanel Grid.Row="1"
                     x:Name="spDetalleLista"
                     Orientation="Vertical"

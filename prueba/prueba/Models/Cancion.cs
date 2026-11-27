@@ -7,7 +7,7 @@ namespace prueba.Models
 {
     public class Cancion
     {
-        [JsonIgnore] // No se guarda en el JSON, solo la usamos en el código
+        [JsonIgnore] // Solo se usa dentro de la aplicación.
         public string Id { get; set; }
 
         [JsonPropertyName("titulo")]

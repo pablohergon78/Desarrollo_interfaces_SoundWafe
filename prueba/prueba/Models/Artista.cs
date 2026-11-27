@@ -7,10 +7,13 @@ namespace prueba.Models
 {
     public class Artista
     {
+        [JsonIgnore]
+        public string Id { get; set; } = "";
+
         [JsonPropertyName("nombre")]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = "";
 
         [JsonPropertyName("genero")]
-        public string Genero { get; set; }
+        public string Genero { get; set; } = "";
     }
 }

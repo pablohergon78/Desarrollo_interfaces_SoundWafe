@@ -20,7 +20,7 @@ namespace prueba
             InitializeComponent();
             _idPlaylistSeleccionada = idPlaylist;
 
-            // OJO: Aquí enlazamos el ListBox
+            // Enlaza las canciones con la lista visual.
             lstCanciones.ItemsSource = Catalogo;
 
             _ = CargarCatalogoAsync(cancionesYaIncluidas ?? Enumerable.Empty<string>());
