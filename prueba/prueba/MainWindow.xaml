@@ -502,14 +502,13 @@
                    FontWeight="Bold"
                    Margin="0,0,0,24"/>
 
-                        <!-- Un Grid para poner el botón a la izquierda y la lista a la derecha -->
-                        <Grid Grid.Row="1">
+                        <!-- VISTA 1: Botón "+" a la izquierda y ListBox de playlists a la derecha -->
+                        <Grid Grid.Row="1" x:Name="gridListasPrincipal" Visibility="Visible">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <!-- El botón de añadir -->
                             <Button Grid.Column="0"
                     x:Name="btnAnadirLista"
                     Content="+"
@@ -525,16 +524,103 @@
                     VerticalAlignment="Top"
                     Click="BtnAnadirLista_Click"/>
 
-                            <!-- EL HUECO PARA LAS LISTAS -->
-                            <ListBox Grid.Column="1" 
+                            <ListBox Grid.Column="1"
                      x:Name="lstPlaylists"
                      Margin="20,0,0,0"
                      Background="#141414"
                      Foreground="White"
                      BorderBrush="#2A2A2A"
-                     DisplayMemberPath="Nombre" 
-                     FontSize="50"/>
-                            <!-- DisplayMemberPath="Nombre" le dice que muestre la propiedad Nombre de la clase Lista -->
+                     HorizontalContentAlignment="Stretch"
+                     DisplayMemberPath="Nombre"
+                     FontSize="32"
+                     SelectionChanged="LstPlaylists_SelectionChanged"/>
+                        </Grid>
+
+                        <!-- VISTA 2: Nombre de la lista arriba y listado de canciones debajo -->
+                        <Grid Grid.Row="1" x:Name="gridDetalleLista" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <DockPanel Grid.Row="0" Margin="0,0,0,16" LastChildFill="True">
+                                <Button DockPanel.Dock="Left"
+                        x:Name="btnVolverListas"
+                        Content="← Volver"
+                        Padding="14,6"
+                        Margin="0,0,10,0"
+                        Background="#222222"
+                        Foreground="White"
+                        BorderBrush="#3A3A3A"
+                        Cursor="Hand"
+                        Click="BtnVolverListas_Click"/>
+
+                                <!-- Botón a la izquierda del nombre de la lista que abre agregarcancionesextra -->
+                                <Button DockPanel.Dock="Left"
+                        x:Name="btnAnadirCancionesALista"
+                        Content="+ Canciones"
+                        Padding="14,6"
+                        Margin="0,0,16,0"
+                        Background="#27D92D"
+                        Foreground="#121212"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        Click="BtnAnadirCancionesALista_Click"/>
+
+                                <TextBlock x:Name="txtTituloListaActual"
+                           Text=""
+                           Foreground="#27D92D"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+                            </DockPanel>
+
+                            <ListBox Grid.Row="1"
+                     x:Name="lstCancionesDeLista"
+                     Background="#141414"
+                     Foreground="White"
+                     BorderBrush="#2A2A2A"
+                     HorizontalContentAlignment="Stretch">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Padding="12,8"
+                                BorderBrush="#242424"
+                                BorderThickness="0,0,0,1">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="36"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Grid.Column="0"
+                                           Text="{Binding Numero}"
+                                           Foreground="#9BA3B0"
+                                           FontSize="14"
+                                           VerticalAlignment="Center"/>
+
+                                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding Titulo}"
+                                               Foreground="White"
+                                               FontSize="15"
+                                               FontWeight="SemiBold"/>
+                                                    <TextBlock Foreground="#9BA3B0" FontSize="12">
+                                        <Run Text="{Binding Cantante}"/>
+                                        <Run Text=" • "/>
+                                        <Run Text="{Binding Album}"/>
+                                                    </TextBlock>
+                                                </StackPanel>
+
+                                                <TextBlock Grid.Column="2"
+                                           Text="{Binding Duracion}"
+                                           Foreground="#9BA3B0"
+                                           FontSize="13"
+                                           VerticalAlignment="Center"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </Grid>
                     </Grid>
                 </TabItem>

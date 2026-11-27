@@ -178,5 +178,34 @@ namespace prueba
                 MessageBox.Show("Error al cargar listas: " + ex.Message);
             }
         }
+
+        public ObservableCollection<Lista> Playlists { get; set; } = new ObservableCollection<Lista>();
+
+        private void LstPlaylists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstPlaylists.SelectedItem is Lista listaSeleccionada)
+            {
+                txtTituloListaActual.Text = listaSeleccionada.Nombre;
+                lstCancionesDeLista.ItemsSource = listaSeleccionada.Canciones; // Cambia 'Canciones' por el nombre de la colección de tu clase Lista
+
+                gridListasPrincipal.Visibility = Visibility.Collapsed;
+                gridDetalleLista.Visibility = Visibility.Visible;
+            }
+        }
+        private void BtnAnadirCancionesALista_Click(object sender, RoutedEventArgs e)
+        {
+            var ventana = new agregarcancionesextra
+            {
+                Owner = this
+            };
+
+            ventana.Show();
+        }
+        private void BtnVolverListas_Click(object sender, RoutedEventArgs e)
+        {
+            lstPlaylists.SelectedItem = null;
+            gridDetalleLista.Visibility = Visibility.Collapsed;
+            gridListasPrincipal.Visibility = Visibility.Visible;
+        }
     }
 }

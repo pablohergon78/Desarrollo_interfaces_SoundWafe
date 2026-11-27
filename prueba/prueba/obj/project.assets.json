@@ -8,23 +8,23 @@
     "net10.0-windows": []
   },
   "packageFolders": {
-    "C:\\Users\\jgarc\\.nuget\\packages\\": {},
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jgarc\\source\\repos\\2611\\prueba\\prueba\\prueba.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\prueba.csproj",
       "projectName": "prueba",
-      "projectPath": "C:\\Users\\jgarc\\source\\repos\\2611\\prueba\\prueba\\prueba.csproj",
-      "packagesPath": "C:\\Users\\jgarc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jgarc\\source\\repos\\2611\\prueba\\prueba\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\prueba.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\source\\repos\\Desarrollo_interfaces_SoundWafe\\prueba\\prueba\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\jgarc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -78,7 +78,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
