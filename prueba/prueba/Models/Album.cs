@@ -19,11 +19,12 @@ namespace prueba.Models
         [JsonPropertyName("idArtista")]
         public string IdArtista { get; set; } = "";
 
-        [JsonPropertyName("anio")]
-        public int Anio { get; set; }
-
         [JsonIgnore]
         public string Subtitulo { get; set; } = "";
+
+
+        [JsonPropertyName("imagenUrl")]
+        public string ImagenUrl { get; set; } = "";
     }
 
 }

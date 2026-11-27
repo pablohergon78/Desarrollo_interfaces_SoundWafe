@@ -1,9 +1,12 @@
 ﻿using prueba.Models;
 using prueba.Services;
-using System.Collections.ObjectModel;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json; // NUEVO: Asegúrate de tener este using
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,14 +19,8 @@ using System.Windows.Shapes;
 
 namespace prueba
 {
-    // Datos que se muestran en cada fila de canciones.
-
-    /// <summary>
-    /// Ventana principal de la aplicación.
-    /// </summary>
     public partial class MainWindow : Window
     {
-        // Canciones del catálogo y canciones añadidas temporalmente.
         private FirebaseDatabaseService _dbService = new FirebaseDatabaseService();
         public ObservableCollection<Lista> MisPlaylists { get; set; } = new ObservableCollection<Lista>();
         public ObservableCollection<Artista> Artistas { get; set; } = new ObservableCollection<Artista>();
@@ -39,7 +36,6 @@ namespace prueba
             TxtUsuario.Text = usuario;
             TxtInicialesUsuario.Text = ObtenerIniciales(usuario);
 
-            // Conectamos las listas con sus controles.
             lstPlaylists.ItemsSource = MisPlaylists;
             lstPlaylistsInicio.ItemsSource = MisPlaylists;
             lstArtistas.ItemsSource = Artistas;
@@ -47,13 +43,11 @@ namespace prueba
 
             _ = CargarPlaylistsDesdeFirebase();
             _ = CargarCatalogoDesdeFirebase();
-           
-
         }
 
-        private async System.Threading.Tasks.Task CargarCatalogoDesdeFirebase()
+        private async Task CargarCatalogoDesdeFirebase()
         {
-            var opciones = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             var canciones = await CargarCatalogoAuxiliarAsync<Cancion>(opciones, "canciones");
             var artistas = await CargarCatalogoAuxiliarAsync<Artista>(opciones, "artista", "artistas");
             var albumes = await CargarCatalogoAuxiliarAsync<Album>(opciones, "albumes", "albums", "album");
@@ -62,16 +56,26 @@ namespace prueba
             foreach (var item in artistas)
             {
                 item.Value.Id = item.Key;
+                // NUEVO: Si la imagen viene nula de Firebase, la dejamos vacía para que salte la foto por defecto
+                if (string.IsNullOrWhiteSpace(item.Value.ImagenUrl))
+                    item.Value.ImagenUrl = "";
+
                 Artistas.Add(item.Value);
             }
 
             var nombresArtistas = artistas.ToDictionary(x => x.Key, x => x.Value.Nombre);
+
             Albumes.Clear();
             foreach (var item in albumes)
             {
                 Album album = item.Value;
                 album.Id = item.Key;
                 album.Titulo = string.IsNullOrWhiteSpace(album.Titulo) ? album.Nombre : album.Titulo;
+
+                // NUEVO: Lo mismo para la portada del álbum
+                if (string.IsNullOrWhiteSpace(album.ImagenUrl))
+                    album.ImagenUrl = "";
+
                 album.Subtitulo = nombresArtistas.TryGetValue(album.IdArtista ?? "", out string? nombre)
                     ? nombre
                     : "Artista desconocido";
@@ -109,75 +113,37 @@ namespace prueba
         {
             return $"{segundos / 60:00}:{segundos % 60:00}";
         }
-        // Cambia a la sección de inicio.
 
-        private void MenuInicio_Click(object sender, RoutedEventArgs e)
-        {
-            MainTabControl.SelectedIndex = 0;
-        }
+        private void MenuInicio_Click(object sender, RoutedEventArgs e) { MainTabControl.SelectedIndex = 0; }
+        private void MenuArtistas_Click(object sender, RoutedEventArgs e) { MainTabControl.SelectedIndex = 1; }
+        private void MenuCanciones_Click(object sender, RoutedEventArgs e) { MainTabControl.SelectedIndex = 2; }
+        private void MenuListas_Click(object sender, RoutedEventArgs e) { MainTabControl.SelectedIndex = 3; }
 
-        private void MenuArtistas_Click(object sender, RoutedEventArgs e)
-        {
-            MainTabControl.SelectedIndex = 1;
-        }
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) { }
+        private void MainTabControl_SelectionChanged_1(object sender, SelectionChangedEventArgs e) { }
 
-        private void MenuCanciones_Click(object sender, RoutedEventArgs e)
-        {
-            MainTabControl.SelectedIndex = 2;
-        }
-
-        private void MenuListas_Click(object sender, RoutedEventArgs e)
-        {
-            MainTabControl.SelectedIndex = 3;
-        }
-
-        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void MainTabControl_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-        // Abre la sección de canciones.
         private void VerCanciones_Click(object sender, RoutedEventArgs e)
         {
-            
             MainTabControl.SelectedIndex = 2;
         }
-        private void BtnAnadirLista_Click(object sender, RoutedEventArgs e) // Abre la ventana para crear una lista.
+
+        private void BtnAnadirLista_Click(object sender, RoutedEventArgs e)
         {
-            NuevaListaWindow ventanaNuevaLista = new NuevaListaWindow
-            {
-                Owner = this
-            };
-
+            NuevaListaWindow ventanaNuevaLista = new NuevaListaWindow { Owner = this };
             bool? resultado = ventanaNuevaLista.ShowDialog();
-
             _ = CargarPlaylistsDesdeFirebase();
         }
 
-
-      
-
-      
-
-        private void AgregarCancionLista_Click(object sender, RoutedEventArgs e) // Añade una canción a la lista temporal.
+        private void AgregarCancionLista_Click(object sender, RoutedEventArgs e)
         {
-            // Obtiene la canción de la fila pulsada.
             if (sender is Button boton && boton.DataContext is CancionItem cancion)
             {
                 _miListaCanciones.Add(cancion);
-
-                MessageBox.Show(
-                    $"Añadida \"{cancion.Titulo}\" ({cancion.Cantante}) a tu lista.\nTotal en tu lista: {_miListaCanciones.Count}",
-                    "SoundWafe",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                MessageBox.Show($"Añadida \"{cancion.Titulo}\" ({cancion.Cantante}) a tu lista.\nTotal en tu lista: {_miListaCanciones.Count}", "SoundWafe", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-        private async System.Threading.Tasks.Task CargarPlaylistsDesdeFirebase()
+
+        private async Task CargarPlaylistsDesdeFirebase()
         {
             string json = await _dbService.ObtenerDatosAsync("playlists");
 
@@ -192,10 +158,9 @@ namespace prueba
 
             try
             {
-                var opciones = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                var diccionario = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Lista>>(json, opciones);
+                var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var diccionario = JsonSerializer.Deserialize<Dictionary<string, Lista>>(json, opciones);
 
-                // Actualiza la lista que se muestra.
                 MisPlaylists.Clear();
 
                 if (diccionario != null)
@@ -203,7 +168,7 @@ namespace prueba
                     foreach (var item in diccionario)
                     {
                         Lista p = item.Value;
-                        p.Id = item.Key; // Guarda el identificador de Firebase.
+                        p.Id = item.Key;
                         MisPlaylists.Add(p);
                     }
                 }
@@ -225,29 +190,7 @@ namespace prueba
         private readonly Dictionary<string, List<FilaCancion>> _datosListas = new Dictionary<string, List<FilaCancion>>();
         private List<FilaCancion> _cancionesPlaylistActual = new List<FilaCancion>();
         private string _nombreListaActual = "";
-        private void CargarListasDePrueba()
-        {
-            _datosListas.Clear();
 
-            _datosListas["Favoritas"] = new List<FilaCancion>
-            {
-                new FilaCancion { Numero = "1", Inicial = "S", Titulo = "Starboy", Cantante = "The Weeknd", Album = "Starboy", Duracion = "03:50" },
-                new FilaCancion { Numero = "2", Inicial = "M", Titulo = "Midnight City", Cantante = "M83", Album = "Hurry Up, We're Dreaming", Duracion = "04:03" },
-                new FilaCancion { Numero = "3", Inicial = "B", Titulo = "Blinding Lights", Cantante = "The Weeknd", Album = "After Hours", Duracion = "03:20" }
-            };
-
-            _datosListas["Entreno"] = new List<FilaCancion>
-            {
-                new FilaCancion { Numero = "1", Inicial = "L", Titulo = "Levitating", Cantante = "Dua Lipa", Album = "Future Nostalgia", Duracion = "03:23" },
-                new FilaCancion { Numero = "2", Inicial = "T", Titulo = "Titanium", Cantante = "David Guetta", Album = "Nothing but the Beat", Duracion = "04:05" }
-            };
-
-            lstPlaylists.Items.Clear();
-            foreach (var nombre in _datosListas.Keys)
-            {
-                lstPlaylists.Items.Add(nombre);
-            }
-        }
 
         private async void lstPlaylists_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -262,7 +205,7 @@ namespace prueba
             spDetalleLista.Visibility = Visibility.Visible;
         }
 
-        private async System.Threading.Tasks.Task CargarCancionesDePlaylistAsync(Lista lista)
+        private async Task CargarCancionesDePlaylistAsync(Lista lista)
         {
             dgCancionesPlaylist.ItemsSource = null;
             _cancionesPlaylistActual.Clear();
@@ -280,8 +223,8 @@ namespace prueba
                 return;
             }
 
-            var opciones = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var catalogo = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Cancion>>(json, opciones);
+            var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var catalogo = JsonSerializer.Deserialize<Dictionary<string, Cancion>>(json, opciones);
             var albumes = await CargarCatalogoAuxiliarAsync<Album>(opciones, "albumes", "albums", "album");
             var artistas = await CargarCatalogoAuxiliarAsync<Artista>(opciones, "artista", "artistas");
             if (catalogo == null) return;
@@ -314,15 +257,14 @@ namespace prueba
             MostrarCancionesOrdenadasYDuracion();
         }
 
-        private async System.Threading.Tasks.Task<Dictionary<string, T>> CargarCatalogoAuxiliarAsync<T>(System.Text.Json.JsonSerializerOptions opciones, params string[] rutas)
+        private async Task<Dictionary<string, T>> CargarCatalogoAuxiliarAsync<T>(JsonSerializerOptions opciones, params string[] rutas)
         {
             foreach (string ruta in rutas)
             {
                 string json = await _dbService.ObtenerCatalogoAsync(ruta);
                 if (!string.IsNullOrWhiteSpace(json) && json != "null")
                 {
-                    return System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, T>>(json, opciones)
-                        ?? new Dictionary<string, T>();
+                    return JsonSerializer.Deserialize<Dictionary<string, T>>(json, opciones) ?? new Dictionary<string, T>();
                 }
             }
 
@@ -374,16 +316,9 @@ namespace prueba
 
         private async void btnAgregarCanciones_Click(object sender, RoutedEventArgs e)
         {
-            // Obtiene la lista seleccionada.
             Lista listaSeleccionada = (Lista)lstPlaylists.SelectedItem;
-
-            // Obtiene su identificador.
             string id = listaSeleccionada.Id;
-
-            // Abre la ventana para añadir canciones.
             agregarcancionesextra ventana = new agregarcancionesextra(id, listaSeleccionada.Canciones?.Keys);
-
-            // Actualiza la lista al cerrar la ventana.
             ventana.ShowDialog();
             await CargarCancionesDePlaylistAsync(listaSeleccionada);
         }
@@ -395,8 +330,6 @@ namespace prueba
             spDetalleLista.Visibility = Visibility.Collapsed;
             gridListasPrincipal.Visibility = Visibility.Visible;
         }
-
-       
     }
 
     public class FilaCancion
@@ -409,4 +342,3 @@ namespace prueba
         public string Duracion { get; set; } = "";
     }
 }
-    

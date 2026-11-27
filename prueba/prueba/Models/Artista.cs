@@ -15,5 +15,8 @@ namespace prueba.Models
 
         [JsonPropertyName("genero")]
         public string Genero { get; set; } = "";
+
+        [JsonPropertyName("imagenUrl")]
+        public string ImagenUrl { get; set; } = "";
     }
 }

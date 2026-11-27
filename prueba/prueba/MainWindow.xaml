@@ -255,7 +255,7 @@
                                     <DataTemplate>
                                         <StackPanel Margin="0,0,16,0">
                                             <Grid Height="250" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                                <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
+                                                <Image Source="{Binding ImagenUrl, FallbackValue='pack://application:,,,/Assets/cantante.png'}" Stretch="UniformToFill"/>
                                             </Grid>
                                             <TextBlock Text="{Binding Nombre}" Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold"/>
                                             <TextBlock Text="{Binding Genero}" Foreground="#7A8494" FontSize="11.5" Margin="0,2,0,0"/>
@@ -289,7 +289,7 @@
                                     <DataTemplate>
                                         <StackPanel Margin="0,0,16,0">
                                             <Grid Height="200" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                                <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
+                                                <Image Source="{Binding ImagenUrl, FallbackValue='pack://application:,,,/Assets/cantante.png'}" Stretch="UniformToFill"/>
                                                 <TextBlock Text="{Binding Titulo}"
                                            FontFamily="Georgia"
                                            FontStyle="Italic"
