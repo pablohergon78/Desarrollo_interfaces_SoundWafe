@@ -1,0 +1,106 @@
+﻿using prueba.Services;
+using prueba.Models;
+using System.Collections.ObjectModel;
+using System.Text.Json;
+using System.Windows;
+
+namespace prueba // Asegúrate de que coincide con tu namespace (el tuyo pone 'prueba')
+{
+    public partial class NuevaListaWindow : Window
+    {
+        private FirebaseDatabaseService _dbService = new FirebaseDatabaseService();
+
+        public ObservableCollection<CancionItem> Canciones { get; set; } = new ObservableCollection<CancionItem>();
+        public string NombreLista { get; private set; }
+        public List<CancionItem> CancionesSeleccionadas { get; private set; } = new List<CancionItem>();
+
+        public NuevaListaWindow()
+        {
+            InitializeComponent();
+            lstCanciones.ItemsSource = Canciones;
+
+            // Llamamos a la carga real de Firebase
+            _ = CargarCancionesDesdeFirebase();
+        }
+
+        // Cambiamos el método para que sea async y traiga datos reales
+        private async System.Threading.Tasks.Task CargarCancionesDesdeFirebase()
+        {
+            Canciones.Clear();
+
+            string json = await _dbService.ObtenerCatalogoAsync("canciones");
+
+            if (string.IsNullOrEmpty(json) || json == "null")
+            {
+                MessageBox.Show("No hay canciones en el catálogo de Firebase.");
+                return;
+            }
+
+            var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var diccionario = JsonSerializer.Deserialize<Dictionary<string, Cancion>>(json, opciones);
+
+            foreach (var item in diccionario)
+            {
+                // Convertimos la canción de Firebase al objeto que espera tu compañero en la UI
+                Canciones.Add(new CancionItem
+                {
+                    Id = item.Key, // El ID de Firebase
+                    Titulo = item.Value.Titulo,
+                    Cantante = "Artista Desconocido", // En Firebase solo guardamos IDAlbum, podríamos buscar el nombre del artista, pero para no liar, ponemos esto (o lo dejáis vacío)
+                    Album = item.Value.IdAlbum,
+                    Duracion = $"{item.Value.DuracionSeg / 60}:{item.Value.DuracionSeg % 60:D2} min",
+                    EstaSeleccionada = false
+                });
+            }
+        }
+
+        private async void BtnGuardar_Click(object sender, RoutedEventArgs e)
+        {
+            // 1. Obtener el nombre de la lista (IMPORTANTE: Necesitas un TextBox en el XAML llamado txtNombreLista)
+            // Si tu compañero no lo ha puesto, avísale.
+            string nombre = txtNombreLista.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MessageBox.Show("Escribe un nombre para la lista.");
+                return;
+            }
+
+            // 2. Recoger las canciones seleccionadas
+            CancionesSeleccionadas = Canciones.Where(c => c.EstaSeleccionada).ToList();
+
+            if (CancionesSeleccionadas.Count == 0)
+            {
+                MessageBox.Show("Selecciona al menos una canción.");
+                return;
+            }
+
+            // 3. Crear el diccionario que espera Firebase: { "idCancion": true }
+            Dictionary<string, bool> dictCanciones = new Dictionary<string, bool>();
+            foreach (var cancion in CancionesSeleccionadas)
+            {
+                dictCanciones.Add(cancion.Id, true);
+            }
+
+            // 4. Enviar a Firebase
+            bool exito = await _dbService.CrearPlaylistCompletaAsync(nombre, dictCanciones);
+
+            if (exito)
+            {
+                NombreLista = nombre; // Guardamos el nombre para que la ventana principal lo sepa
+                MessageBox.Show("¡Playlist creada con éxito!");
+                this.DialogResult = true; // Esto cierra la ventana y le dice a MainWindow que fue bien
+            }
+            else
+            {
+                MessageBox.Show(_dbService.LastError ?? "Firebase rechazó la operación.", "Firebase", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+            Close();
+        }
+    }
+}

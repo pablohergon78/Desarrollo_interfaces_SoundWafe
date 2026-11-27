@@ -39,7 +39,7 @@ namespace prueba
             }
             else
             {
-                lblMensaje.Text = "Correo o contraseña incorrectos.";
+                lblMensaje.Text = auth.LastError ?? "Firebase no pudo validar la sesión.";
                 lblMensaje.Foreground = Brushes.Red;
                 btnEntrar.IsEnabled = true;
             }

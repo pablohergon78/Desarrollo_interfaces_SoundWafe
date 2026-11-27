@@ -88,12 +88,11 @@ namespace prueba // Asegúrate de que coincide con tu namespace (el tuyo pone 'p
             if (exito)
             {
                 NombreLista = nombre; // Guardamos el nombre para que la ventana principal lo sepa
-                MessageBox.Show("¡Playlist creada con éxito!");
-                this.DialogResult = true; // Esto cierra la ventana y le dice a MainWindow que fue bien
+                Close();
             }
             else
             {
-                MessageBox.Show("Error al conectar con Firebase.");
+                MessageBox.Show(_dbService.LastError ?? "Firebase rechazó la operación.", "Firebase", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

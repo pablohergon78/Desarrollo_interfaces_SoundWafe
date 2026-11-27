@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -9,38 +8,69 @@ namespace prueba.Services
     public class FirebaseAuthService
     {
         private const string ApiKey = "AIzaSyCMazIKm0wtecmkHnf7zXalaVvymuIzBSk";
+        private static readonly HttpClient Client = new HttpClient();
+        public string? LastError { get; private set; }
 
         public async Task<bool> LoginAsync(string email, string password)
         {
-            using (HttpClient client = new HttpClient())
+            LastError = null;
+            var datosLogin = new { email, password, returnSecureToken = true };
+            string json = JsonSerializer.Serialize(datosLogin);
+            using var contenido = new StringContent(json, Encoding.UTF8, "application/json");
+            string url = $"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={ApiKey}";
+
+            try
             {
-                var datosLogin = new { email = email, password = password, returnSecureToken = true };
-                string json = JsonSerializer.Serialize(datosLogin);
-                var contenido = new StringContent(json, Encoding.UTF8, "application/json");
-
-                string url = $"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={ApiKey}";
-
-                try
+                using HttpResponseMessage respuesta = await Client.PostAsync(url, contenido);
+                string respuestaJson = await respuesta.Content.ReadAsStringAsync();
+                if (!respuesta.IsSuccessStatusCode)
                 {
-                    HttpResponseMessage respuesta = await client.PostAsync(url, contenido);
-
-                    if (respuesta.IsSuccessStatusCode)
-                    {
-                        string jsonRespuesta = await respuesta.Content.ReadAsStringAsync();
-                        using (JsonDocument doc = JsonDocument.Parse(jsonRespuesta))
-                        {
-                            SesionActual.Token = doc.RootElement.GetProperty("idToken").GetString();
-                            SesionActual.Uid = doc.RootElement.GetProperty("localId").GetString();
-                            return true;
-                        }
-                    }
-
+                    LastError = ObtenerMensajeError(respuestaJson, respuesta.ReasonPhrase);
                     return false;
                 }
-                catch (Exception)
+
+                using JsonDocument doc = JsonDocument.Parse(respuestaJson);
+                if (!doc.RootElement.TryGetProperty("idToken", out var token) ||
+                    !doc.RootElement.TryGetProperty("localId", out var uid))
                 {
+                    LastError = "Firebase no devolvió un token de sesión válido.";
                     return false;
                 }
+
+                SesionActual.Token = token.GetString();
+                SesionActual.Uid = uid.GetString();
+                SesionActual.Email = email;
+                return SesionActual.EstaLogeado;
+            }
+            catch (HttpRequestException ex)
+            {
+                LastError = $"No se pudo conectar con Firebase: {ex.Message}";
+                return false;
+            }
+            catch (JsonException ex)
+            {
+                LastError = $"Respuesta no válida de Firebase: {ex.Message}";
+                return false;
+            }
+        }
+
+        private static string ObtenerMensajeError(string json, string? fallback)
+        {
+            try
+            {
+                using JsonDocument doc = JsonDocument.Parse(json);
+                string? mensaje = doc.RootElement.GetProperty("error").GetProperty("message").GetString();
+                return mensaje switch
+                {
+                    "INVALID_PASSWORD" or "EMAIL_NOT_FOUND" or "INVALID_LOGIN_CREDENTIALS" => "Correo o contraseña incorrectos.",
+                    "USER_DISABLED" => "La cuenta está deshabilitada.",
+                    "API_KEY_INVALID" => "La API key de Firebase no es válida.",
+                    _ => $"Firebase rechazó el inicio de sesión ({mensaje ?? fallback ?? "sin detalle"})."
+                };
+            }
+            catch (JsonException)
+            {
+                return $"Firebase rechazó el inicio de sesión ({fallback ?? "sin detalle"}).";
             }
         }
     }

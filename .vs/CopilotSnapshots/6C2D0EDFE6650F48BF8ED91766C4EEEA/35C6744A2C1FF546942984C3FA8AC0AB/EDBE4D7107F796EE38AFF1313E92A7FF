@@ -1,0 +1,357 @@
+﻿using prueba.Models;
+using prueba.Services;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace prueba
+{
+    // Modelo de datos para cada fila de la tabla de canciones
+
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        // Lista maestra con todas las canciones y lista temporal para el botón '+'
+        private FirebaseDatabaseService _dbService = new FirebaseDatabaseService();
+        public ObservableCollection<Lista> MisPlaylists { get; set; } = new ObservableCollection<Lista>();
+        private readonly List<CancionItem> _todasLasCanciones = new List<CancionItem>();
+        private readonly List<CancionItem> _miListaCanciones = new List<CancionItem>();
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            string usuario = string.IsNullOrWhiteSpace(SesionActual.Email) ? "Usuario" : SesionActual.Email;
+            TxtUsuario.Text = usuario;
+            TxtInicialesUsuario.Text = ObtenerIniciales(usuario);
+
+            // ESTA ES LA LÍNEA QUE FALTA:
+            lstPlaylists.ItemsSource = MisPlaylists;
+
+            _ = CargarPlaylistsDesdeFirebase();
+
+        }
+
+        private void MenuInicio_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 0;
+        }
+
+        private void MenuArtistas_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 1;
+        }
+
+        private void MenuCanciones_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 2;
+        }
+
+        private void MenuListas_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 3;
+        }
+
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MainTabControl_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void BtnAnadirLista_Click(object sender, RoutedEventArgs e)//para acceder a la ventana hija de crear lista y recoger el nombre con las canciones
+        {
+            NuevaListaWindow ventanaNuevaLista = new NuevaListaWindow
+            {
+                Owner = this
+            };
+
+            bool? resultado = ventanaNuevaLista.ShowDialog();
+
+            _ = CargarPlaylistsDesdeFirebase();
+        }
+
+
+        private void FiltrarCanciones_Click(object sender, RoutedEventArgs e)//funcion organizadora
+        {
+            if (sender is Button botonPulsado && botonPulsado.Tag is string cantanteSeleccionado)
+            {
+                AplicarFiltroCantante(cantanteSeleccionado);
+                MarcarBotonActivo(botonPulsado);
+            }
+        }
+
+        private void AplicarFiltroCantante(string cantante)//funcion que sirve para filtrar las canciones por cantante y actualizar la lista de canciones mostrada en la interfaz
+        {
+            var filtradas = cantante == "Todas"
+                ? _todasLasCanciones
+                : _todasLasCanciones.Where(c => c.Cantante == cantante).ToList();
+
+            ListaCancionesControl.ItemsSource = filtradas;
+
+            string palabraCancion = filtradas.Count == 1 ? "canción" : "canciones";
+            TxtContadorCanciones.Text = $"{filtradas.Count} {palabraCancion} esperando su próxima lista.";
+        }
+
+        private void MarcarBotonActivo(Button botonActivo)// sirve para marcar en blanco el boton que se ha pulsado y los demas en gris en el filtro de canciones
+        {
+            var botonesFiltro = new[] { BtnFiltroTodas, BtnFiltroMara, BtnFiltroDias, BtnFiltroNorte, BtnFiltroSilva };
+
+            foreach (var btn in botonesFiltro)
+            {
+                if (btn == null) continue;
+
+                bool esActivo = btn == botonActivo;
+                btn.Background = esActivo
+                    ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ECEAE4"))
+                    : Brushes.Transparent;
+
+                btn.Foreground = esActivo
+                    ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0D0F12"))
+                    : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#9BA3B0"));
+
+                btn.BorderBrush = esActivo
+                    ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ECEAE4"))
+                    : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#252A32"));
+
+                btn.FontWeight = esActivo ? FontWeights.SemiBold : FontWeights.Normal;
+            }
+        }
+
+        private void AgregarCancionLista_Click(object sender, RoutedEventArgs e)// ser ala funcion que sirve para añadir la cancion a la lista de reproduccion y mostrar un mensaje de confirmacion
+        {
+            // Recupera el objeto CancionItem asociado a la fila donde se hizo clic
+            if (sender is Button boton && boton.DataContext is CancionItem cancion)
+            {
+                _miListaCanciones.Add(cancion);
+
+                MessageBox.Show(
+                    $"Añadida \"{cancion.Titulo}\" ({cancion.Cantante}) a tu lista.\nTotal en tu lista: {_miListaCanciones.Count}",
+                    "SoundWafe",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+        }
+        private async System.Threading.Tasks.Task CargarPlaylistsDesdeFirebase()
+        {
+            string json = await _dbService.ObtenerDatosAsync("playlists");
+
+            if (string.IsNullOrEmpty(json) || json == "null")
+            {
+                if (!string.IsNullOrWhiteSpace(_dbService.LastError))
+                {
+                    MessageBox.Show(_dbService.LastError, "Firebase", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                return;
+            }
+
+            try
+            {
+                var opciones = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var diccionario = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Lista>>(json, opciones);
+
+                // Limpiamos la lista visual
+                MisPlaylists.Clear();
+
+                if (diccionario != null)
+                {
+                    foreach (var item in diccionario)
+                    {
+                        Lista p = item.Value;
+                        p.Id = item.Key; // Guardamos el ID (ej: "-Nxyz123")
+                        MisPlaylists.Add(p);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar listas: " + ex.Message);
+            }
+        }
+
+        private static string ObtenerIniciales(string usuario)
+        {
+            string[] partes = usuario.Split(new[] { ' ', '@', '.', '_', '-' }, StringSplitOptions.RemoveEmptyEntries);
+            return partes.Length >= 2
+                ? $"{partes[0][0]}{partes[1][0]}".ToUpperInvariant()
+                : usuario[..1].ToUpperInvariant();
+        }
+
+        private readonly Dictionary<string, List<FilaCancion>> _datosListas = new Dictionary<string, List<FilaCancion>>();
+        private List<FilaCancion> _cancionesPlaylistActual = new List<FilaCancion>();
+        private string _nombreListaActual = "";
+        private void CargarListasDePrueba()
+        {
+            _datosListas.Clear();
+
+            _datosListas["Favoritas"] = new List<FilaCancion>
+            {
+                new FilaCancion { Numero = "1", Inicial = "S", Titulo = "Starboy", Cantante = "The Weeknd", Album = "Starboy", Duracion = "03:50" },
+                new FilaCancion { Numero = "2", Inicial = "M", Titulo = "Midnight City", Cantante = "M83", Album = "Hurry Up, We're Dreaming", Duracion = "04:03" },
+                new FilaCancion { Numero = "3", Inicial = "B", Titulo = "Blinding Lights", Cantante = "The Weeknd", Album = "After Hours", Duracion = "03:20" }
+            };
+
+            _datosListas["Entreno"] = new List<FilaCancion>
+            {
+                new FilaCancion { Numero = "1", Inicial = "L", Titulo = "Levitating", Cantante = "Dua Lipa", Album = "Future Nostalgia", Duracion = "03:23" },
+                new FilaCancion { Numero = "2", Inicial = "T", Titulo = "Titanium", Cantante = "David Guetta", Album = "Nothing but the Beat", Duracion = "04:05" }
+            };
+
+            lstPlaylists.Items.Clear();
+            foreach (var nombre in _datosListas.Keys)
+            {
+                lstPlaylists.Items.Add(nombre);
+            }
+        }
+
+        private async void lstPlaylists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstPlaylists.SelectedItem is not Lista listaSeleccionada) return;
+
+            _nombreListaActual = listaSeleccionada.Nombre ?? "Sin nombre";
+            txtTituloListaActual.Text = _nombreListaActual;
+
+            await CargarCancionesDePlaylistAsync(listaSeleccionada);
+
+            gridListasPrincipal.Visibility = Visibility.Collapsed;
+            spDetalleLista.Visibility = Visibility.Visible;
+        }
+
+        private async System.Threading.Tasks.Task CargarCancionesDePlaylistAsync(Lista lista)
+        {
+            dgCancionesPlaylist.ItemsSource = null;
+
+            if (lista.Canciones == null || lista.Canciones.Count == 0)
+            {
+                txtDuracionTotal.Text = "Duración total: 00:00";
+                return;
+            }
+
+            string json = await _dbService.ObtenerCatalogoAsync("canciones");
+            if (string.IsNullOrWhiteSpace(json) || json == "null")
+            {
+                MessageBox.Show(_dbService.LastError ?? "No se pudo cargar el catálogo de canciones.", "Firebase", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var opciones = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var catalogo = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Cancion>>(json, opciones);
+            if (catalogo == null) return;
+
+            var canciones = lista.Canciones.Keys
+                .Where(id => catalogo.ContainsKey(id))
+                .Select(id =>
+                {
+                    Cancion cancion = catalogo[id];
+                    return new FilaCancion
+                    {
+                        Numero = "",
+                        Inicial = string.IsNullOrWhiteSpace(cancion.Titulo) ? "" : cancion.Titulo[..1].ToUpperInvariant(),
+                        Titulo = cancion.Titulo ?? "",
+                        Cantante = "Artista desconocido",
+                        Album = cancion.IdAlbum ?? "",
+                        Duracion = $"{cancion.DuracionSeg / 60:00}:{cancion.DuracionSeg % 60:00}"
+                    };
+                })
+                .ToList();
+
+            _cancionesPlaylistActual = canciones;
+            MostrarCancionesOrdenadasYDuracion();
+        }
+
+        private void CmbOrdenCanciones_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(_nombreListaActual) || dgCancionesPlaylist == null) return;
+            MostrarCancionesOrdenadasYDuracion();
+        }
+
+        private void MostrarCancionesOrdenadasYDuracion()
+        {
+            List<FilaCancion> canciones;
+            if (_cancionesPlaylistActual.Count > 0)
+            {
+                canciones = _cancionesPlaylistActual;
+            }
+            else if (!_datosListas.TryGetValue(_nombreListaActual, out canciones))
+            {
+                return;
+            }
+
+            string opcionOrden = (cmbOrdenCanciones?.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Nombre";
+
+            List<FilaCancion> listaOrdenada = opcionOrden == "Duración"
+                ? canciones.OrderBy(c => SegundosDesdeTexto(c.Duracion)).ToList()
+                : canciones.OrderBy(c => c.Titulo, StringComparer.CurrentCultureIgnoreCase).ToList();
+
+            dgCancionesPlaylist.ItemsSource = listaOrdenada;
+
+            int totalSeg = canciones.Sum(c => SegundosDesdeTexto(c.Duracion));
+            txtDuracionTotal.Text = $"Duración total: {totalSeg / 60:00}:{totalSeg % 60:00}";
+        }
+
+        private int SegundosDesdeTexto(string duracion)
+        {
+            if (string.IsNullOrWhiteSpace(duracion)) return 0;
+            var partes = duracion.Split(':');
+            if (partes.Length == 2 &&
+                int.TryParse(partes[0], out int min) &&
+                int.TryParse(partes[1], out int seg))
+            {
+                return min * 60 + seg;
+            }
+            return 0;
+        }
+
+        private async void btnAgregarCanciones_Click(object sender, RoutedEventArgs e)
+        {
+            // 1. Cogemos la lista seleccionada
+            Lista listaSeleccionada = (Lista)lstPlaylists.SelectedItem;
+
+            // 2. Sacamos su ID
+            string id = listaSeleccionada.Id;
+
+            // 3. Creamos la ventana pasándole el ID entre paréntesis
+            agregarcancionesextra ventana = new agregarcancionesextra(id, listaSeleccionada.Canciones?.Keys);
+
+            // 4. La mostramos
+            ventana.ShowDialog();
+            await CargarCancionesDePlaylistAsync(listaSeleccionada);
+        }
+
+        private void BtnVolverListas_Click(object sender, RoutedEventArgs e)
+        {
+            _nombreListaActual = "";
+            lstPlaylists.SelectedItem = null;
+            spDetalleLista.Visibility = Visibility.Collapsed;
+            gridListasPrincipal.Visibility = Visibility.Visible;
+        }
+
+       
+    }
+
+    public class FilaCancion
+    {
+        public string Numero { get; set; } = "";
+        public string Inicial { get; set; } = "";
+        public string Titulo { get; set; } = "";
+        public string Cantante { get; set; } = "";
+        public string Album { get; set; } = "";
+        public string Duracion { get; set; } = "";
+    }
+}
+    

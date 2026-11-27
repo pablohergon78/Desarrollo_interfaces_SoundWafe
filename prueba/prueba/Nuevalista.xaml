@@ -62,7 +62,7 @@
                                            Foreground="White"
                                            FontSize="14"
                                            FontWeight="SemiBold"/>
-                                <TextBlock Text="{Binding Artista}"
+                                <TextBlock Text="{Binding Cantante}"
                                            Foreground="#9BA3B0"
                                            FontSize="12"/>
                             </StackPanel>

@@ -47,7 +47,7 @@
 
                             <!-- Sin título de canción -->
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                <TextBlock Text="{Binding Cantante}"
+                                <TextBlock Text="{Binding Titulo}"
                                            Foreground="White"
                                            FontSize="14"
                                            FontWeight="SemiBold"/>

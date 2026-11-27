@@ -33,6 +33,10 @@ namespace prueba
         {
             InitializeComponent();
 
+            string usuario = string.IsNullOrWhiteSpace(SesionActual.Email) ? "Usuario" : SesionActual.Email;
+            TxtUsuario.Text = usuario;
+            TxtInicialesUsuario.Text = ObtenerIniciales(usuario);
+
             // ESTA ES LA LÍNEA QUE FALTA:
             lstPlaylists.ItemsSource = MisPlaylists;
 
@@ -79,10 +83,7 @@ namespace prueba
 
             bool? resultado = ventanaNuevaLista.ShowDialog();
 
-            if (resultado == true)
-            {
-                _ = CargarPlaylistsDesdeFirebase();
-            }
+            _ = CargarPlaylistsDesdeFirebase();
         }
 
 
@@ -152,7 +153,11 @@ namespace prueba
 
             if (string.IsNullOrEmpty(json) || json == "null")
             {
-                return; // No hay playlists o hubo un error
+                if (!string.IsNullOrWhiteSpace(_dbService.LastError))
+                {
+                    MessageBox.Show(_dbService.LastError, "Firebase", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                return;
             }
 
             try
@@ -178,7 +183,17 @@ namespace prueba
                 MessageBox.Show("Error al cargar listas: " + ex.Message);
             }
         }
+
+        private static string ObtenerIniciales(string usuario)
+        {
+            string[] partes = usuario.Split(new[] { ' ', '@', '.', '_', '-' }, StringSplitOptions.RemoveEmptyEntries);
+            return partes.Length >= 2
+                ? $"{partes[0][0]}{partes[1][0]}".ToUpperInvariant()
+                : usuario[..1].ToUpperInvariant();
+        }
+
         private readonly Dictionary<string, List<FilaCancion>> _datosListas = new Dictionary<string, List<FilaCancion>>();
+        private List<FilaCancion> _cancionesPlaylistActual = new List<FilaCancion>();
         private string _nombreListaActual = "";
         private void CargarListasDePrueba()
         {
@@ -204,17 +219,84 @@ namespace prueba
             }
         }
 
-        private void lstPlaylists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void lstPlaylists_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lstPlaylists.SelectedItem == null) return;
+            if (lstPlaylists.SelectedItem is not Lista listaSeleccionada) return;
 
-            _nombreListaActual = lstPlaylists.SelectedItem.ToString();
+            _nombreListaActual = listaSeleccionada.Nombre ?? "Sin nombre";
             txtTituloListaActual.Text = _nombreListaActual;
 
-            MostrarCancionesOrdenadasYDuracion();
+            await CargarCancionesDePlaylistAsync(listaSeleccionada);
 
             gridListasPrincipal.Visibility = Visibility.Collapsed;
             spDetalleLista.Visibility = Visibility.Visible;
+        }
+
+        private async System.Threading.Tasks.Task CargarCancionesDePlaylistAsync(Lista lista)
+        {
+            dgCancionesPlaylist.ItemsSource = null;
+            _cancionesPlaylistActual.Clear();
+
+            if (lista.Canciones == null || lista.Canciones.Count == 0)
+            {
+                txtDuracionTotal.Text = "Duración total: 00:00";
+                return;
+            }
+
+            string json = await _dbService.ObtenerCatalogoAsync("canciones");
+            if (string.IsNullOrWhiteSpace(json) || json == "null")
+            {
+                MessageBox.Show(_dbService.LastError ?? "No se pudo cargar el catálogo de canciones.", "Firebase", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var opciones = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var catalogo = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Cancion>>(json, opciones);
+            var albumes = await CargarCatalogoAuxiliarAsync<Album>(opciones, "albumes", "albums", "album");
+            var artistas = await CargarCatalogoAuxiliarAsync<Artista>(opciones, "artista", "artistas");
+            if (catalogo == null) return;
+
+            var canciones = lista.Canciones.Keys
+                .Where(id => catalogo.ContainsKey(id))
+                .Select(id =>
+                {
+                    Cancion cancion = catalogo[id];
+                    Album? album = !string.IsNullOrWhiteSpace(cancion.IdAlbum) && albumes.TryGetValue(cancion.IdAlbum, out var albumEncontrado)
+                        ? albumEncontrado
+                        : null;
+                    string idArtista = album?.IdArtista ?? cancion.IdArtista;
+                    string nombreArtista = !string.IsNullOrWhiteSpace(idArtista) && artistas.TryGetValue(idArtista, out var artista)
+                        ? artista.Nombre
+                        : "Artista desconocido";
+                    return new FilaCancion
+                    {
+                        Numero = "",
+                        Inicial = string.IsNullOrWhiteSpace(cancion.Titulo) ? "" : cancion.Titulo[..1].ToUpperInvariant(),
+                        Titulo = cancion.Titulo ?? "",
+                        Cantante = nombreArtista,
+                        Album = album?.Nombre ?? album?.Titulo ?? cancion.IdAlbum ?? "Álbum desconocido",
+                        Duracion = $"{cancion.DuracionSeg / 60:00}:{cancion.DuracionSeg % 60:00}"
+                    };
+                })
+                .ToList();
+
+            _cancionesPlaylistActual = canciones;
+            MostrarCancionesOrdenadasYDuracion();
+        }
+
+        private async System.Threading.Tasks.Task<Dictionary<string, T>> CargarCatalogoAuxiliarAsync<T>(System.Text.Json.JsonSerializerOptions opciones, params string[] rutas)
+        {
+            foreach (string ruta in rutas)
+            {
+                string json = await _dbService.ObtenerCatalogoAsync(ruta);
+                if (!string.IsNullOrWhiteSpace(json) && json != "null")
+                {
+                    return System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, T>>(json, opciones)
+                        ?? new Dictionary<string, T>();
+                }
+            }
+
+            return new Dictionary<string, T>();
         }
 
         private void CmbOrdenCanciones_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -225,7 +307,15 @@ namespace prueba
 
         private void MostrarCancionesOrdenadasYDuracion()
         {
-            if (!_datosListas.TryGetValue(_nombreListaActual, out var canciones)) return;
+            List<FilaCancion> canciones;
+            if (_cancionesPlaylistActual.Count > 0)
+            {
+                canciones = _cancionesPlaylistActual;
+            }
+            else if (!_datosListas.TryGetValue(_nombreListaActual, out canciones))
+            {
+                return;
+            }
 
             string opcionOrden = (cmbOrdenCanciones?.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "Nombre";
 
@@ -252,14 +342,20 @@ namespace prueba
             return 0;
         }
 
-        private void btnAgregarCanciones_Click(object sender, RoutedEventArgs e)
+        private async void btnAgregarCanciones_Click(object sender, RoutedEventArgs e)
         {
-            var ventana = new agregarcancionesextra
-            {
-                Owner = this
-            };
+            // 1. Cogemos la lista seleccionada
+            Lista listaSeleccionada = (Lista)lstPlaylists.SelectedItem;
 
-            ventana.Show();
+            // 2. Sacamos su ID
+            string id = listaSeleccionada.Id;
+
+            // 3. Creamos la ventana pasándole el ID entre paréntesis
+            agregarcancionesextra ventana = new agregarcancionesextra(id, listaSeleccionada.Canciones?.Keys);
+
+            // 4. La mostramos
+            ventana.ShowDialog();
+            await CargarCancionesDePlaylistAsync(listaSeleccionada);
         }
 
         private void BtnVolverListas_Click(object sender, RoutedEventArgs e)

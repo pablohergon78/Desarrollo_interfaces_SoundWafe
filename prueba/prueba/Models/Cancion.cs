@@ -16,6 +16,9 @@ namespace prueba.Models
         [JsonPropertyName("idAlbum")]
         public string IdAlbum { get; set; }
 
+        [JsonPropertyName("idArtista")]
+        public string IdArtista { get; set; }
+
         [JsonPropertyName("duracionSeg")]
         public int DuracionSeg { get; set; }
     }

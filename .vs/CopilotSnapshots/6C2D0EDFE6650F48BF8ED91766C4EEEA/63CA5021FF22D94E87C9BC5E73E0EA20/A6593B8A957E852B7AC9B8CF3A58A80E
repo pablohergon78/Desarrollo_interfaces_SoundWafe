@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic; // Necesario para Dictionary
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks; // Necesario para Task
+
+namespace prueba.Services
+{
+    public class FirebaseDatabaseService
+    {
+        private const string BaseUrl = "https://dam2026-d40f5-default-rtdb.europe-west1.firebasedatabase.app";
+
+        // =========================================================================
+        // 1. GET - LEER DATOS PRIVADOS DEL USUARIO (Playlists)
+        // =========================================================================
+        public async Task<string> ObtenerDatosAsync(string ruta)
+        {
+            string rutaLimpia = ruta.Trim('/');
+            string url = $"{BaseUrl}/usuarios/{SesionActual.Uid}/{rutaLimpia}.json?auth={SesionActual.Token}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage respuesta = await client.GetAsync(url);
+                    if (respuesta.IsSuccessStatusCode)
+                    {
+                        return await respuesta.Content.ReadAsStringAsync();
+                    }
+                    return null;
+                }
+                catch { return null; }
+            }
+        }
+
+        // =========================================================================
+        // 2. GET - LEER EL CATÁLOGO GLOBAL (Canciones)
+        // =========================================================================
+        public async Task<string> ObtenerCatalogoAsync(string ruta)
+        {
+            string url = $"{BaseUrl}/catalogo/{ruta}.json?auth={SesionActual.Token}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage respuesta = await client.GetAsync(url);
+                    if (respuesta.IsSuccessStatusCode)
+                    {
+                        return await respuesta.Content.ReadAsStringAsync();
+                    }
+                    else
+                    {
+                        string errorFirebase = await respuesta.Content.ReadAsStringAsync();
+                        System.Windows.MessageBox.Show($"Error {respuesta.StatusCode}: {errorFirebase}");
+                        return null;
+                    }
+                }
+                catch { return null; }
+            }
+        }
+
+        // =========================================================================
+        // 3. POST - CREAR UNA PLAYLIST COMPLETA (Con o sin canciones)
+        // =========================================================================
+        public async Task<bool> CrearPlaylistCompletaAsync(string nombrePlaylist, Dictionary<string, bool> cancionesSeleccionadas)
+        {
+            string url = $"{BaseUrl}/usuarios/{SesionActual.Uid}/playlists.json?auth={SesionActual.Token}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                var nuevaPlaylist = new
+                {
+                    nombre = nombrePlaylist,
+                    canciones = cancionesSeleccionadas
+                };
+
+                string json = JsonSerializer.Serialize(nuevaPlaylist);
+                var contenido = new StringContent(json, Encoding.UTF8, "application/json");
+
+                try
+                {
+                    HttpResponseMessage respuesta = await client.PostAsync(url, contenido);
+                    return respuesta.IsSuccessStatusCode;
+                }
+                catch { return false; }
+            }
+        }
+
+        // =========================================================================
+        // 4. PATCH - AÑADIR UNA CANCIÓN A UNA PLAYLIST EXISTENTE
+        // =========================================================================
+        public async Task<bool> AnadirCancionAPlaylistAsync(string idPlaylist, string idCancion)
+        {
+            // Vamos a la caja de "canciones" de esa playlist específica
+            string url = $"{BaseUrl}/usuarios/{SesionActual.Uid}/playlists/{idPlaylist}/canciones.json?auth={SesionActual.Token}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                // Creamos un mini objeto: { "can_01": true }
+                var nuevaCancion = new Dictionary<string, bool> { { idCancion, true } };
+                string json = JsonSerializer.Serialize(nuevaCancion);
+                var contenido = new StringContent(json, Encoding.UTF8, "application/json");
+
+                try
+                {
+                    // PATCH fusiona esto sin borrar las canciones que ya hubiera
+                    HttpResponseMessage respuesta = await client.PatchAsync(url, contenido);
+                    return respuesta.IsSuccessStatusCode;
+                }
+                catch { return false; }
+            }
+        }
+
+        // =========================================================================
+        // 5. DELETE - BORRAR UNA PLAYLIST ENTERA
+        // =========================================================================
+        public async Task<bool> EliminarDatoAsync(string ruta, string idRegistro)
+        {
+            string url = $"{BaseUrl}/usuarios/{SesionActual.Uid}/{ruta}/{idRegistro}.json?auth={SesionActual.Token}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage respuesta = await client.DeleteAsync(url);
+                    return respuesta.IsSuccessStatusCode;
+                }
+                catch { return false; }
+            }
+        }
+    }
+}

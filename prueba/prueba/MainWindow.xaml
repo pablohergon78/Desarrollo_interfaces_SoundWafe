@@ -78,11 +78,11 @@
                 <!-- Perfil -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,10,0,0">
                     <Border Width="38" Height="38" CornerRadius="19" Background="#27D92D" Margin="0,0,12,0">
-                        <TextBlock Text="IM" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="TxtInicialesUsuario" Text="U" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="Isabel Martínez" Foreground="White" FontWeight="SemiBold" FontSize="13"/>
-                        <TextBlock Text="Tu biblioteca" Foreground="#7A8494" FontSize="11"/>
+                        <TextBlock x:Name="TxtUsuario" Text="Usuario" Foreground="White" FontWeight="SemiBold" FontSize="13"/>
+                        <TextBlock Text="Sesión Firebase" Foreground="#7A8494" FontSize="11"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
@@ -531,7 +531,15 @@
                      Foreground="#FFFFFF"
                      BorderBrush="#2A2A2A"
                      FontSize="28"
-                     SelectionChanged="lstPlaylists_SelectionChanged"/>
+                      SelectionChanged="lstPlaylists_SelectionChanged">
+                                 <ListBox.ItemTemplate>
+                                     <DataTemplate>
+                                         <TextBlock Text="{Binding Nombre}"
+                                                    Foreground="#FFFFFF"
+                                                    Padding="12,8"/>
+                                     </DataTemplate>
+                                 </ListBox.ItemTemplate>
+                             </ListBox>
                         </Grid>
 
                         <!-- StackPanel de detalle al pulsar una lista -->

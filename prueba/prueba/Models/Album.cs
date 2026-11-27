@@ -10,6 +10,9 @@ namespace prueba.Models
         [JsonPropertyName("titulo")]
         public string Titulo { get; set; }
 
+        [JsonPropertyName("nombre")]
+        public string Nombre { get; set; }
+
         [JsonPropertyName("idArtista")]
         public string IdArtista { get; set; }
 
