@@ -115,13 +115,32 @@
                 <TabItem>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="40">
+
+                            <StackPanel.Resources>
+                                <!-- Estilo de las tarjetas de éxitos: se iluminan con el borde verde al pasar el ratón -->
+                                <Style x:Key="TarjetaExito" TargetType="Border">
+                                    <Setter Property="Background" Value="#161A22"/>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="1"/>
+                                    <Setter Property="CornerRadius" Value="8"/>
+                                    <Setter Property="Padding" Value="15"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#1D2330"/>
+                                            <Setter Property="BorderBrush" Value="#27D92D"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Resources>
+
                             <Border Background="#161A22" CornerRadius="12" Padding="35" Height="220" Margin="0,0,0,30">
                                 <Grid>
                                     <StackPanel VerticalAlignment="Center" Width="450" HorizontalAlignment="Left">
-                                        <TextBlock Text="NUEVO · INDIE POP" Foreground="#27D92D" FontSize="11" FontWeight="Bold" Margin="0,0,0,8"/>
-                                        <TextBlock Text="Entre líneas" Foreground="White" FontSize="32" FontWeight="Bold" Margin="0,0,0,6"/>
-                                        <TextBlock Text="Mara Vélez" Foreground="#A0A8B4" FontSize="14" Margin="0,0,0,15"/>
-                                        <Button Content="Ver canciones →" Width="130" Height="32" Background="#27D92D" Foreground="Black" FontWeight="Bold" BorderThickness="0" Cursor="Hand">
+                                        <TextBlock Text="NUSTROS MEJORES TEMAS" Foreground="#27D92D" FontSize="11" FontWeight="Bold" Margin="0,0,0,8"/>
+                                        <TextBlock Text="Entre Salesianos" Foreground="White" FontSize="32" FontWeight="Bold" Margin="0,0,0,6"/>
+                                        <TextBlock Text="Con Vali y los Valipaldis y mucho más" Foreground="#A0A8B4" FontSize="14" Margin="0,0,0,15"/>
+                                        <Button Content="Ver canciones →" Width="130" Height="32" Background="#27D92D" Foreground="Black" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="VerCanciones_Click">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Border Background="{TemplateBinding Background}" CornerRadius="16">
@@ -133,6 +152,40 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
+
+                            <!-- ÉXITOS -->
+                            <TextBlock Text="Éxitos" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,0,15"/>
+                            <UniformGrid Columns="2" Margin="0,0,0,30">
+
+                                <!-- Éxito 1 -->
+                                <Border Style="{StaticResource TarjetaExito}" Margin="0,0,10,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Width="46" Height="46" CornerRadius="23" Background="#27D92D">
+                                            <TextBlock Text="♪" FontSize="22" FontWeight="Bold" Foreground="#0F1218"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
+                                            <TextBlock Text="Vali de extraradio" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                                            <TextBlock Text="Vali y los Valipaldis" Foreground="#A0A8B4" FontSize="13" Margin="0,3,0,0"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Éxito 2 -->
+                                <Border Style="{StaticResource TarjetaExito}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Width="46" Height="46" CornerRadius="23" Background="#27D92D">
+                                            <TextBlock Text="♪" FontSize="22" FontWeight="Bold" Foreground="#0F1218"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
+                                            <TextBlock Text="Lo que me pasaste" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                                            <TextBlock Text="Amores Yatra" Foreground="#A0A8B4" FontSize="13" Margin="0,3,0,0"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+
+                            </UniformGrid>
 
                             <TextBlock Text="Mis Listas" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,0,15"/>
                             <UniformGrid Columns="3" Height="100">
@@ -153,144 +206,104 @@
                 <!-- Pestaña 2: Artistas y Álbumnes -->
                 <TabItem>
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="40,32">
-                        <!-- Sin HorizontalAlignment="Left" ni MaxWidth fijo para que las 4 columnas ocupen todo el ancho -->
                         <StackPanel>
 
                             <!-- Cabecera editorial -->
                             <TextBlock Text="EXPLORA EL CATÁLOGO"
-                                       Foreground="#7A8494"
-                                       FontSize="10"
-                                       FontWeight="Bold"
-                                       Margin="0,0,0,6"/>
+                       Foreground="#7A8494"
+                       FontSize="10"
+                       FontWeight="Bold"
+                       Margin="0,0,0,6"/>
 
                             <TextBlock Text="Artistas y álbumes"
-                                       FontFamily="Georgia"
-                                       FontSize="40"
-                                       FontWeight="Bold"
-                                       Foreground="#FFFFFF"
-                                       Margin="0,0,0,6"/>
+                       FontFamily="Georgia"
+                       FontSize="40"
+                       FontWeight="Bold"
+                       Foreground="#FFFFFF"
+                       Margin="0,0,0,6"/>
 
                             <TextBlock Text="Voces, historias y discos para descubrir con calma."
-                                       Foreground="#A0A8B4"
-                                       FontSize="13"
-                                       Margin="0,0,0,34"/>
+                       Foreground="#A0A8B4"
+                       FontSize="13"
+                       Margin="0,0,0,34"/>
 
                             <!-- SECCIÓN ARTISTAS -->
                             <TextBlock Text="VOCES DESTACADAS"
-                                       Foreground="#7A8494"
-                                       FontSize="10"
-                                       FontWeight="Bold"
-                                       Margin="0,0,0,4"/>
+                       Foreground="#7A8494"
+                       FontSize="10"
+                       FontWeight="Bold"
+                       Margin="0,0,0,4"/>
 
                             <TextBlock Text="Artistas"
-                                       FontFamily="Georgia"
-                                       FontSize="26"
-                                       FontWeight="Bold"
-                                       Foreground="#FFFFFF"
-                                       Margin="0,0,0,16"/>
+                       FontFamily="Georgia"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="#FFFFFF"
+                       Margin="0,0,0,16"/>
 
-                            <!-- Fila de 4 artistas (todos usan pack://application:,,,/Assets/cantante.png por ahora) -->
-                            <UniformGrid Columns="4" Rows="1" Margin="0,0,0,38">
-
-                                <!-- Artista 1: Mara Vélez -->
-                                <StackPanel Margin="0,0,16,0">
-                                    <Grid Height="250" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                        <Image Source="Assets/cantante.png" Stretch="UniformToFill"/>
-                                    </Grid>
-                                    <TextBlock Text="Mara Vélez" Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold"/>
-                                    <TextBlock Text="Indie pop" Foreground="#7A8494" FontSize="11.5" Margin="0,2,0,0"/>
-                                </StackPanel>
-
-                                <!-- Artista 2: Norte Magnético -->
-                                <StackPanel Margin="0,0,16,0">
-                                    <Grid Height="250" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                        <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
-                                        <TextBlock Text="02" Foreground="#D0D6E0" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,8,6"/>
-                                    </Grid>
-                                    <TextBlock Text="Norte Magnético" Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold"/>
-                                    <TextBlock Text="Electrónica" Foreground="#7A8494" FontSize="11.5" Margin="0,2,0,0"/>
-                                </StackPanel>
-
-                                <!-- Artista 3: Los Días Largos -->
-                                <StackPanel Margin="0,0,16,0">
-                                    <Grid Height="250" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                        <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
-                                        <TextBlock Text="03" Foreground="#D0D6E0" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,8,6"/>
-                                    </Grid>
-                                    <TextBlock Text="Los Días Largos" Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold"/>
-                                    <TextBlock Text="Rock alternativo" Foreground="#7A8494" FontSize="11.5" Margin="0,2,0,0"/>
-                                </StackPanel>
-
-                                <!-- Artista 4: Silva -->
-                                <StackPanel>
-                                    <Grid Height="250" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                        <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
-                                        <TextBlock Text="04" Foreground="#D0D6E0" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,8,6"/>
-                                    </Grid>
-                                    <TextBlock Text="Silva" Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold"/>
-                                    <TextBlock Text="R&amp;B" Foreground="#7A8494" FontSize="11.5" Margin="0,2,0,0"/>
-                                </StackPanel>
-
-                            </UniformGrid>
+                            <!-- Artistas (se rellena desde Firebase: catalogo/artistas) -->
+                            <ItemsControl x:Name="lstArtistas" Margin="0,0,-16,38">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="4"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,16,0">
+                                            <Grid Height="250" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
+                                                <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
+                                            </Grid>
+                                            <TextBlock Text="{Binding Nombre}" Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold"/>
+                                            <TextBlock Text="{Binding Genero}" Foreground="#7A8494" FontSize="11.5" Margin="0,2,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
 
                             <!-- SECCIÓN ÁLBUMES -->
                             <TextBlock Text="DISCOS ESENCIALES"
-                                       Foreground="#7A8494"
-                                       FontSize="10"
-                                       FontWeight="Bold"
-                                       Margin="0,0,0,4"/>
+                       Foreground="#7A8494"
+                       FontSize="10"
+                       FontWeight="Bold"
+                       Margin="0,0,0,4"/>
 
                             <TextBlock Text="Álbumes"
-                                       FontFamily="Georgia"
-                                       FontSize="26"
-                                       FontWeight="Bold"
-                                       Foreground="#FFFFFF"
-                                       Margin="0,0,0,16"/>
+                       FontFamily="Georgia"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="#FFFFFF"
+                       Margin="0,0,0,16"/>
 
-                            <!-- Fila de 4 álbumes (todos usan pack://application:,,,/Assets/cantante.png por ahora) -->
-                            <UniformGrid Columns="4" Rows="1">
-
-                                <!-- Álbum 1 -->
-                                <StackPanel Margin="0,0,16,0">
-                                    <Grid Height="200" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                        <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
-                                        <TextBlock Text="Entre líneas" FontFamily="Georgia" FontStyle="Italic" Foreground="#FFFFFF" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,12"/>
-                                    </Grid>
-                                    <TextBlock Text="Entre líneas" Foreground="#FFFFFF" FontSize="13.5" FontWeight="SemiBold"/>
-                                    <TextBlock Text="Mara Vélez · 2024" Foreground="#7A8494" FontSize="11" Margin="0,2,0,0"/>
-                                </StackPanel>
-
-                                <!-- Álbum 2 -->
-                                <StackPanel Margin="0,0,16,0">
-                                    <Grid Height="200" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                        <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
-                                        <TextBlock Text="Campo abierto" FontFamily="Georgia" FontStyle="Italic" Foreground="#FFFFFF" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,12"/>
-                                    </Grid>
-                                    <TextBlock Text="Campo abierto" Foreground="#FFFFFF" FontSize="13.5" FontWeight="SemiBold"/>
-                                    <TextBlock Text="Los Días Largos · 2023" Foreground="#7A8494" FontSize="11" Margin="0,2,0,0"/>
-                                </StackPanel>
-
-                                <!-- Álbum 3 -->
-                                <StackPanel Margin="0,0,16,0">
-                                    <Grid Height="200" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                        <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
-                                        <TextBlock Text="Orbital" FontFamily="Georgia" FontStyle="Italic" Foreground="#FFFFFF" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,12"/>
-                                    </Grid>
-                                    <TextBlock Text="Orbital" Foreground="#FFFFFF" FontSize="13.5" FontWeight="SemiBold"/>
-                                    <TextBlock Text="Norte Magnético · 2024" Foreground="#7A8494" FontSize="11" Margin="0,2,0,0"/>
-                                </StackPanel>
-
-                                <!-- Álbum 4 -->
-                                <StackPanel>
-                                    <Grid Height="200" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
-                                        <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
-                                        <TextBlock Text="Agua dulce" FontFamily="Georgia" FontStyle="Italic" Foreground="#FFFFFF" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,12"/>
-                                    </Grid>
-                                    <TextBlock Text="Agua dulce" Foreground="#FFFFFF" FontSize="13.5" FontWeight="SemiBold"/>
-                                    <TextBlock Text="Silva · 2022" Foreground="#7A8494" FontSize="11" Margin="0,2,0,0"/>
-                                </StackPanel>
-
-                            </UniformGrid>
+                            <!-- Álbumes (se rellena desde Firebase: catalogo/albumes) -->
+                            <ItemsControl x:Name="lstAlbumes" Margin="0,0,-16,0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="4"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,16,0">
+                                            <Grid Height="200" Background="#161A22" ClipToBounds="True" Margin="0,0,0,10">
+                                                <Image Source="pack://application:,,,/Assets/cantante.png" Stretch="UniformToFill"/>
+                                                <TextBlock Text="{Binding Titulo}"
+                                           FontFamily="Georgia"
+                                           FontStyle="Italic"
+                                           Foreground="#FFFFFF"
+                                           FontSize="18"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Bottom"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
+                                           Margin="8,0,8,12"/>
+                                            </Grid>
+                                            <TextBlock Text="{Binding Titulo}" Foreground="#FFFFFF" FontSize="13.5" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding Subtitulo}" Foreground="#7A8494" FontSize="11" Margin="0,2,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
 
                         </StackPanel>
                     </ScrollViewer>
@@ -298,43 +311,8 @@
 
                 <!-- Pestaña 3: Canciones -->
                 <!-- Pestaña 3: Canciones -->
-                <TabItem>
-                    <TabItem.Resources>
-                        <!-- Estilo de botón píldora para filtrar por cantante -->
-                        <Style x:Key="FiltroCantanteBtnStyle" TargetType="Button">
-                            <Setter Property="Height" Value="30"/>
-                            <Setter Property="Padding" Value="14,0"/>
-                            <Setter Property="Margin" Value="0,0,8,0"/>
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Foreground" Value="#9BA3B0"/>
-                            <Setter Property="BorderBrush" Value="#252A32"/>
-                            <Setter Property="BorderThickness" Value="1"/>
-                            <Setter Property="FontSize" Value="12"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border x:Name="PillBorder"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="15"
-                                Padding="{TemplateBinding Padding}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="PillBorder" Property="BorderBrush" Value="#4A5260"/>
-                                                <Setter Property="Foreground" Value="#FFFFFF"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </TabItem.Resources>
-
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="40,32">
+                <TabItem Header="Canciones">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="40,32" Background="#121212">
                         <StackPanel>
 
                             <!-- Cabecera editorial -->
@@ -351,49 +329,12 @@
                        Foreground="#FFFFFF"
                        Margin="0,0,0,6"/>
 
-                            <!-- Contador dinámico según el filtro activo -->
+                            <!-- Contador dinámico -->
                             <TextBlock x:Name="TxtContadorCanciones"
-                       Text="9 canciones esperando su próxima lista."
+                       Text="0 canciones esperando su próxima lista."
                        Foreground="#8E96A4"
                        FontSize="13"
                        Margin="0,0,0,22"/>
-
-                            <!-- Botones de filtro por cantante -->
-                            <WrapPanel Orientation="Horizontal" Margin="0,0,0,28">
-                                <Button x:Name="BtnFiltroTodas"
-                        Content="Todas"
-                        Tag="Todas"
-                        Click="FiltrarCanciones_Click"
-                        Style="{StaticResource FiltroCantanteBtnStyle}"
-                        Background="#ECEAE4"
-                        Foreground="#0D0F12"
-                        BorderBrush="#ECEAE4"
-                        FontWeight="SemiBold"/>
-
-                                <Button x:Name="BtnFiltroMara"
-                        Content="Mara Vélez"
-                        Tag="Mara Vélez"
-                        Click="FiltrarCanciones_Click"
-                        Style="{StaticResource FiltroCantanteBtnStyle}"/>
-
-                                <Button x:Name="BtnFiltroDias"
-                        Content="Los Días Largos"
-                        Tag="Los Días Largos"
-                        Click="FiltrarCanciones_Click"
-                        Style="{StaticResource FiltroCantanteBtnStyle}"/>
-
-                                <Button x:Name="BtnFiltroNorte"
-                        Content="Norte Magnético"
-                        Tag="Norte Magnético"
-                        Click="FiltrarCanciones_Click"
-                        Style="{StaticResource FiltroCantanteBtnStyle}"/>
-
-                                <Button x:Name="BtnFiltroSilva"
-                        Content="Silva"
-                        Tag="Silva"
-                        Click="FiltrarCanciones_Click"
-                        Style="{StaticResource FiltroCantanteBtnStyle}"/>
-                            </WrapPanel>
 
                             <!-- Cabecera de columnas de la tabla -->
                             <Grid Margin="12,0,12,10">
@@ -411,7 +352,7 @@
 
                             <Border Height="1" Background="#1C2028" Margin="0,0,0,4"/>
 
-                            <!-- Lista filtrable de canciones -->
+                            <!-- Lista de todas las canciones -->
                             <ItemsControl x:Name="ListaCancionesControl">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
@@ -484,7 +425,6 @@
 
                         </StackPanel>
                     </ScrollViewer>
-                
                 </TabItem>
 
                 <!-- Pestaña 4: Mis Listas -->

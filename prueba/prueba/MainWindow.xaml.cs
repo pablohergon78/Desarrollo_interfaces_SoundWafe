@@ -41,8 +41,10 @@ namespace prueba
             lstPlaylists.ItemsSource = MisPlaylists;
 
             _ = CargarPlaylistsDesdeFirebase();
+           
 
         }
+        //para las canciones en la hija 
 
         private void MenuInicio_Click(object sender, RoutedEventArgs e)
         {
@@ -73,7 +75,12 @@ namespace prueba
         {
 
         }
-
+        //boton ver canciones 
+        private void VerCanciones_Click(object sender, RoutedEventArgs e)
+        {
+            
+            MainTabControl.SelectedIndex = 2;
+        }
         private void BtnAnadirLista_Click(object sender, RoutedEventArgs e)//para acceder a la ventana hija de crear lista y recoger el nombre con las canciones
         {
             NuevaListaWindow ventanaNuevaLista = new NuevaListaWindow
@@ -87,51 +94,9 @@ namespace prueba
         }
 
 
-        private void FiltrarCanciones_Click(object sender, RoutedEventArgs e)//funcion organizadora
-        {
-            if (sender is Button botonPulsado && botonPulsado.Tag is string cantanteSeleccionado)
-            {
-                AplicarFiltroCantante(cantanteSeleccionado);
-                MarcarBotonActivo(botonPulsado);
-            }
-        }
+      
 
-        private void AplicarFiltroCantante(string cantante)//funcion que sirve para filtrar las canciones por cantante y actualizar la lista de canciones mostrada en la interfaz
-        {
-            var filtradas = cantante == "Todas"
-                ? _todasLasCanciones
-                : _todasLasCanciones.Where(c => c.Cantante == cantante).ToList();
-
-            ListaCancionesControl.ItemsSource = filtradas;
-
-            string palabraCancion = filtradas.Count == 1 ? "canción" : "canciones";
-            TxtContadorCanciones.Text = $"{filtradas.Count} {palabraCancion} esperando su próxima lista.";
-        }
-
-        private void MarcarBotonActivo(Button botonActivo)// sirve para marcar en blanco el boton que se ha pulsado y los demas en gris en el filtro de canciones
-        {
-            var botonesFiltro = new[] { BtnFiltroTodas, BtnFiltroMara, BtnFiltroDias, BtnFiltroNorte, BtnFiltroSilva };
-
-            foreach (var btn in botonesFiltro)
-            {
-                if (btn == null) continue;
-
-                bool esActivo = btn == botonActivo;
-                btn.Background = esActivo
-                    ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ECEAE4"))
-                    : Brushes.Transparent;
-
-                btn.Foreground = esActivo
-                    ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0D0F12"))
-                    : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#9BA3B0"));
-
-                btn.BorderBrush = esActivo
-                    ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ECEAE4"))
-                    : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#252A32"));
-
-                btn.FontWeight = esActivo ? FontWeights.SemiBold : FontWeights.Normal;
-            }
-        }
+      
 
         private void AgregarCancionLista_Click(object sender, RoutedEventArgs e)// ser ala funcion que sirve para añadir la cancion a la lista de reproduccion y mostrar un mensaje de confirmacion
         {
